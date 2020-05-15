@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
-import TextField from '../../../../shared/components/inputs/TextField';
-import Button from '../../../../shared/components/inputs/Button';
-import { Container, Row, Col } from 'react-bootstrap';
+import { View, Text } from "react-native";
+import { Button } from 'react-native-elements';
 
 import { useAuthentication } from '../../../../shared/hooks/authentication';
 
@@ -16,16 +14,16 @@ const Login = ({ navigation, action }) => {
     }, []);
 
     return (
-        <view class="container">
-            <view className="row">
-                <view className="col-md-6">
-                    <text>Kisoft</text>
-                </view>
-                <view className="col-md-6">
-                    <button onClick={() => navigation.navigate("Home", { color: "blue" })}>ckick me</button>
-                </view>
-            </view>
-        </view>
+        <View class="container">
+            <View className="row">
+                <View className="col-md-6">
+                    <Text>Kisoft</Text>
+                </View>
+                <View className="col-md-6">
+                    <Button onPress={() => navigation.navigate("Home", { color: "blue" })} title='ckick me'/>
+                </View>
+            </View>
+        </View>
     )
 }
 

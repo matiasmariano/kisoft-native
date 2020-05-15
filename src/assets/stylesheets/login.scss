@@ -1,6 +1,15 @@
 @import "common.scss";
 
-.barraSiperior{
+.marginTopIOS{
+  //margen para el lugar a los costados del microfono.
+  margin-top: 25px;
+}
+
+.none{
+  
+}
+
+.barraSuperior{
   background-color: $primary;
   height: 25px;
 }

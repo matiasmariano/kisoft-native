@@ -1,19 +1,11 @@
 import React, { Fragment } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import AppNavigator from './src/AppNavigator';
+
+import './node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>asdasdasd</Text>
-    </View>
+    <AppNavigator />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

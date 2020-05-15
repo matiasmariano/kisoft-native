@@ -13,3 +13,5 @@ web-report/
 # macOS
 .DS_Store
 .package-lock.json
+/.vs
+/node_modules

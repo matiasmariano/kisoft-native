@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextField from '../../../../shared/components/inputs/TextField';
 import Button from '../../../../shared/components/inputs/Button';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { useAuthentication } from '../../../../shared/hooks/authentication';
 
-const Login = ({ action }) => {
+const Login = ({ navigation, action }) => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const { userData, authenticate } = useAuthentication()
@@ -14,36 +15,19 @@ const Login = ({ action }) => {
 
     }, []);
 
-    if (userData)
-        return <Redirect push to='/home' />;
-
     return (
-        <div className="row">
-            <div className="col-md-12 col-xs-12">
-
-                <div className="row">
-                    <div className="col-md-4 col-xs-12 col-md-offset-4">
-                        <p>Kisoft</p>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-4 col-xs-12 col-md-offset-4">
-                        <TextField title="Usuario" value={user} onChange={(value) => setUser(value.target.value)} />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-4 col-xs-12 col-md-offset-4">
-                        <TextField title="Contraseña" value={pass} onChange={(value) => setPass(value.target.value)} />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-4 col-xs-12 col-md-offset-4"></div>
-                    <Button title="Iniciar sesión" onClick={() => authenticate(user, pass)} />
-                </div>
-            </div>
-            
-        </div>
+        <view class="container">
+            <view className="row">
+                <view className="col-md-6">
+                    <text>Kisoft</text>
+                </view>
+                <view className="col-md-6">
+                    <button onClick={() => navigation.navigate("Home", { color: "blue" })}>ckick me</button>
+                </view>
+            </view>
+        </view>
     )
 }
 
 export default Login;
+

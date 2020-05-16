@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from "react-native";
-import { Button } from 'react-native-elements';
-//import DeviceInfo from 'react-native-device-info';
+import { StyleSheet, Text, View } from 'react-native';
+import { Button, Input } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { useAuthentication } from '../../../../shared/hooks/authentication';
-import styles from '../../../../../assets/stylesheets/login.scss';
+import { transparent } from 'material-ui/styles/colors';
 
 const Login = ({ navigation, action }) => {
     const [user, setUser] = useState('');
@@ -14,26 +14,56 @@ const Login = ({ navigation, action }) => {
 
     useEffect(() => {
         //DeviceInfo.getSystemVersion().then(systemVersion => {
-            //iOS: "11.0"
-       //     setSystemVersion(systemVersion);
-       //   });
+        //iOS: "11.0"
+        //     setSystemVersion(systemVersion);
+        //   });
     }, []);
 
     return (
-        <View /*style={manufacturer == 'Apple' ? styles.marginTopIOS : styles.none}*/>
-            <View className="row">
-                <View style={styles.barraSuperior}>
-
-                </View>
-                <View className="col-md-6">
-                    <Text>Kisoft</Text>
-                </View>
-                <View className="col-md-6">
-                    <Button onPress={() => navigation.navigate("Home", { color: "blue" })} title='ckick me'/>
-                </View>
+        <View style={styles.container}>
+            <View style={styles.image}>
+                <Text>IMAGEN</Text>
             </View>
-        </View>
+            <View style={styles.body}>
+                <Input
+                    onChangeText={value => setUser(value)}
+                    placeholder="Usuario"
+                    value={user} />
+                <Input
+                    onChangeText={value => setPass(value)}
+                    placeholder="Contraseña"
+                    value={pass} />
+                <Button
+                    buttonStyle={styles.button}
+                    onPress={() => navigation.navigate("Home")}
+                    title={`INICIAR SESI$N`} />
+                <Button
+                    buttonStyle={{ backgroundColor: transparent }}
+                    titleStyle={{ color: '#7a7af4' }}
+                    onPress={() => navigation.navigate("Home")}
+                    title={`Reseteá tu clave aqui`}></Button>
+            </View>
+        </View >
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    image: {
+        height: hp('30%'),
+        padding: '30%'
+    },
+    body: {
+        width: wp('70%'),
+        alignItems: 'center'
+    },
+    button: {
+        backgroundColor: '#E3001B',
+        color: '#FFFFFF'
+    }
+})
 
 export default Login;

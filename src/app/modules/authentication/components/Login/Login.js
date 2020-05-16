@@ -5,6 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 import { useAuthentication } from '../../../../shared/hooks/authentication';
 import { transparent } from 'material-ui/styles/colors';
+import styles from '../../../../../assets/stylesheets/login.scss';
 
 const Login = ({ navigation, action }) => {
     const [user, setUser] = useState('');
@@ -31,39 +32,20 @@ const Login = ({ navigation, action }) => {
                     value={user} />
                 <Input
                     onChangeText={value => setPass(value)}
-                    placeholder="Contraseña"
+                    placeholder="Contraseï¿½a"
                     value={pass} />
                 <Button
                     buttonStyle={styles.button}
                     onPress={() => navigation.navigate("Home")}
                     title={`INICIAR SESI$N`} />
                 <Button
-                    buttonStyle={{ backgroundColor: transparent }}
-                    titleStyle={{ color: '#7a7af4' }}
+                    buttonStyle={styles.backgroundTransparent}
+                    titleStyle={styles.secondaryButtonTitle}
                     onPress={() => navigation.navigate("Home")}
-                    title={`Reseteá tu clave aqui`}></Button>
+                    title={`Reseteï¿½ tu clave aqui`}></Button>
             </View>
         </View >
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center'
-    },
-    image: {
-        height: hp('30%'),
-        padding: '30%'
-    },
-    body: {
-        width: wp('70%'),
-        alignItems: 'center'
-    },
-    button: {
-        backgroundColor: '#E3001B',
-        color: '#FFFFFF'
-    }
-})
 
 export default Login;

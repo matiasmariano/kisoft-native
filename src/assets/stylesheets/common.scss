@@ -1,1 +1,30 @@
 $primary: rgb(227, 0, 27);
+$secondary: #7a7af4;
+
+.secondaryButtonTitle{
+  color: $secondary;
+}
+
+.container{
+  flex: 1;
+  align-items: 'center';
+}
+
+.image {
+  height: 30%;
+  padding: 30%;
+}
+
+.body {
+  //width: 100%;
+  align-items: 'center';
+}
+
+.button {
+  background-color: '#E3001B';
+  color: '#FFFFFF';
+}
+
+.backgroundTransparent{
+  background-color: transparent;
+}

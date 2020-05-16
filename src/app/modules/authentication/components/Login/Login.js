@@ -21,7 +21,7 @@ const Login = ({ navigation, action }) => {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <View /*style={styles.barraSuperior}*/>
             <View style={styles.image}>
                 <Text>IMAGEN</Text>
             </View>
@@ -32,17 +32,17 @@ const Login = ({ navigation, action }) => {
                     value={user} />
                 <Input
                     onChangeText={value => setPass(value)}
-                    placeholder="Contrase�a"
+                    placeholder="Contraseña"
                     value={pass} />
                 <Button
-                    buttonStyle={styles.button}
+                    /*buttonStyle={styles.button}*/
                     onPress={() => navigation.navigate("Home")}
-                    title={`INICIAR SESI$N`} />
+                    title={`Iniciar Sesion`} />
                 <Button
-                    buttonStyle={styles.backgroundTransparent}
-                    titleStyle={styles.secondaryButtonTitle}
+                    /*buttonStyle={styles.backgroundTransparent}*/
+                    /*titleStyle={styles.secondaryButtonTitle}*/
                     onPress={() => navigation.navigate("Home")}
-                    title={`Resete� tu clave aqui`}></Button>
+                    title={`Resetea tu clave aqui`}></Button>
             </View>
         </View >
     )

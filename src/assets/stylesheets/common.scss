@@ -6,7 +6,6 @@ $secondary: #7a7af4;
 }
 
 .container{
-  flex: 1;
   align-items: 'center';
 }
 
@@ -21,8 +20,8 @@ $secondary: #7a7af4;
 }
 
 .button {
-  background-color: '#E3001B';
-  color: '#FFFFFF';
+  background-color: $primary;
+  color: 'white';
 }
 
 .backgroundTransparent{

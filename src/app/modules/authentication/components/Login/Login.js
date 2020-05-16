@@ -35,12 +35,12 @@ const Login = ({ navigation, action }) => {
                     placeholder="Contraseña"
                     value={pass} />
                 <Button
-                    /*buttonStyle={styles.button}*/
+                    buttonStyle={{backgroundColor: 'rgb(227, 0, 27)'}}
                     onPress={() => navigation.navigate("Home")}
                     title={`Iniciar Sesion`} />
                 <Button
-                    /*buttonStyle={styles.backgroundTransparent}*/
-                    /*titleStyle={styles.secondaryButtonTitle}*/
+                    buttonStyle={styles.backgroundTransparent}
+                    titleStyle={{color: 'rgb(122, 122, 244)'}}
                     onPress={() => navigation.navigate("Home")}
                     title={`Resetea tu clave aqui`}></Button>
             </View>

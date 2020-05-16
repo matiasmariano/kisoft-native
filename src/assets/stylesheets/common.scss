@@ -1,8 +1,8 @@
 $primary: rgb(227, 0, 27);
-$secondary: #7a7af4;
+$secondary: rgb(122, 122, 244);
 
-.secondaryButtonTitle{
-  color: $secondary;
+.titleButtonStyle{
+  color: white;
 }
 
 .container{
@@ -19,11 +19,15 @@ $secondary: #7a7af4;
   align-items: 'center';
 }
 
-.button {
-  background-color: $primary;
+.buttonPrimary {
+  background-color: rgb(227, 0, 27);
   color: 'white';
 }
 
 .backgroundTransparent{
   background-color: transparent;
+}
+
+.titleButtonStyleSecondary{
+  color: $secondary;
 }

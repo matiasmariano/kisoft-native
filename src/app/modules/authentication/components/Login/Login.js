@@ -49,7 +49,7 @@ const Login = (props) => {
                     secureTextEntry={true}
                     value={pass} />
                 <ButtonK
-                    buttonStyle={{ backgroundColor: 'rgb(227, 0, 27)', width: '80%', marginLeft: 'auto', marginRight: 'auto' }}
+                    style={{ backgroundColor: '#E0273E', width: '80%', marginLeft: 'auto', marginRight: 'auto', borderRadius: 46 }}
                     onPress={() => props.login()}
                     title={`Iniciar Sesion`} />
                 <ButtonK

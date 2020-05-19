@@ -7,10 +7,6 @@ export default ({ navigation }) => {
         <View>
             <Text>Kisoft</Text>
             <Button
-                onPress={() => navigation.navigate("Login")}
-                title={`Volver`} />
-
-            <Button
                 onPress={() => navigation.openDrawer()}
                 title={`Abrir menu`} />
         </View>

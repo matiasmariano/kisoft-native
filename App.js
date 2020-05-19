@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
-import AppNavigator from './src/AppNavigator';
+import {Provider} from 'react-redux';
+import Root from './src/app/root';
+import configureStore from './src/app/store';
 
-import Aside from './src/app/shared/components/aside/Aside';
+let store = configureStore()
 
-
-export default function App() {
+export default function App(){
   return (
-    <>
-      <Aside />
-    </>
+    <Provider store={store}>
+      <Root />
+    </Provider>
   );
 }

@@ -1,10 +1,5 @@
 import { connect } from 'react-redux'
 import Login from './Login';
-import {withRouter} from 'react-router-dom';
-
-import { 
-
-} from '../../redux/Actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -20,4 +15,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

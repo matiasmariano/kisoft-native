@@ -9,6 +9,10 @@ export default ({ navigation }) => {
             <Button
                 onPress={() => navigation.navigate("Login")}
                 title={`Volver`} />
+
+            <Button
+                onPress={() => navigation.openDrawer()}
+                title={`Abrir menu`} />
         </View>
     );
 };

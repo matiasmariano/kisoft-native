@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
-import { Text, View } from 'react-native';
 import AppNavigator from './src/AppNavigator';
 
-//import './node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Aside from './src/app/shared/components/aside/Aside';
+
 
 export default function App() {
   return (
-    <AppNavigator />
+    <>
+      <Aside />
+    </>
   );
 }

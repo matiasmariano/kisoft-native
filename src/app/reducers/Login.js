@@ -1,4 +1,4 @@
-import { MOCK_LOGIN } from '../modules/authentication/actions/Actions';
+import { MOCK_LOGIN, MOCK_LOGOUT } from '../modules/authentication/actions/Actions';
 
 const initialState = {
   isFetching: false,
@@ -14,6 +14,13 @@ function login(state = initialState, action) {
       return{
         ...state,
         loggedIn: true
+      }
+    }
+
+    case MOCK_LOGOUT:{
+      return{
+        ...state,
+        loggedIn: false
       }
     }
 

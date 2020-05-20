@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {connect} from 'react-redux';
 
 import ButtonK from '../../../../shared/components/inputs/ButtonK';
 import InputText from '../../../../shared/components/inputs/InputText';
@@ -49,4 +50,18 @@ const Login = ({authenticate}) => {
     )
 }
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.login.loggedIn
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        login: () => {
+            dispatch(login());
+        }
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);

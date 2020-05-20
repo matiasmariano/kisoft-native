@@ -1,18 +1,138 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { Button } from 'react-native-elements';
+import { logout } from '../../authentication/actions/Actions';
+import {connect} from 'react-redux';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export default ({ navigation }) => {
+const Home = (props) => {
+
+    let categorias = [{
+        titulo: 'Gastronomia',
+        img: 'https://dam.ngenespanol.com/wp-content/uploads/2018/11/5-gastronomia-paises-mundo.png'
+    },
+    {
+        titulo: 'Aventura',
+        img: 'https://live.mrf.io/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/934/7c6/9347c644653c46c9033dfed8415131ea/detenidos-seis-turistas-en-peru-por-defecar-y-causar-danos-en-machu-picchu.jpg?mtime=1579565836'
+    },
+    {
+        titulo: 'Bienestar',
+        img: 'https://www.bupasalud.com/sites/default/files/portada/2018-07/mobile/bienestar-bupa_767.jpg'
+    },
+    {
+        titulo: 'Escapadas',
+        img: 'https://www.actualidadviajes.com/wp-content/uploads/2017/09/escapada-fin-de-semana-equipaje.jpg'
+    },{
+        titulo: 'Gastronomia',
+        img: 'https://dam.ngenespanol.com/wp-content/uploads/2018/11/5-gastronomia-paises-mundo.png'
+    },
+    {
+        titulo: 'Aventura',
+        img: 'https://live.mrf.io/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/934/7c6/9347c644653c46c9033dfed8415131ea/detenidos-seis-turistas-en-peru-por-defecar-y-causar-danos-en-machu-picchu.jpg?mtime=1579565836'
+    },
+    {
+        titulo: 'Bienestar',
+        img: 'https://www.bupasalud.com/sites/default/files/portada/2018-07/mobile/bienestar-bupa_767.jpg'
+    },
+    {
+        titulo: 'Escapadas',
+        img: 'https://www.actualidadviajes.com/wp-content/uploads/2017/09/escapada-fin-de-semana-equipaje.jpg'
+    }]
+
+    let categoriasList = categorias.map(categoria => {
+        return(
+            <View style={styles.categoriaContainer} key={`categoria_${categoria.titulo}`}>
+                <Image source={{uri: categoria.img}} style={styles.imagen}/>
+            </View>
+        )
+    })
+
     return (
-        <View>
-            <Text>Kisoft</Text>
-            <Button
-                onPress={() => navigation.navigate("Login")}
-                title={`Volver`} />
+        <View style={styles.container}>
+            <View style={styles.barraSuperior}></View>
+            <ScrollView>
+                <Text style={styles.title}>Categorias</Text>
+                <Text style={styles.subtitle}>Encontrá las experiencias que más te interesan</Text>
 
-            <Button
-                onPress={() => navigation.openDrawer()}
-                title={`Abrir menu`} />
+                <View style={styles.categoriasView}>
+                    {categoriasList}
+                </View>
+                {/*<Text>KiSoft</Text>
+                <Button
+                    onPress={() => props.logout()}
+                    title={`Volver`} />
+
+                <Button
+                    onPress={() => props.navigation.openDrawer()}
+                title={`Abrir menu`} />*/}
+            </ScrollView>
         </View>
     );
 };
+
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.login.loggedIn
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => {
+            dispatch(logout());
+        }
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+
+  const styles = {
+    container: { flex: 1 },
+    title: {
+        marginTop: hp('2%'),
+        height: hp('5%'),
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 34,
+        lineHeight: 46,
+        marginLeft: 28
+    },
+    barraSuperior: {
+        backgroundColor: 'rgb(227, 0, 27)',
+        height: hp('10%')
+    },
+    subtitle: {
+        height: hp('5%'),
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 14.2,
+        lineHeight: 19,
+        color: '#E32028',
+        marginLeft: 28
+    },
+    categoriaContainer:{
+        borderRadius: 13,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 4,
+        backgroundColor: '#FFFFFF',
+        marginLeft: 28,
+        width: wp('90%'),
+        marginTop: hp('1%'),
+        height: hp('14%')
+    },
+    categoriasView:{
+        flexDirection:'column',
+    },
+    imagen: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 13,
+    }
+  }

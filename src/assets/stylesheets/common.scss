@@ -31,3 +31,17 @@ $secondary: rgb(122, 122, 244);
 .titleButtonStyleSecondary{
   color: $secondary;
 }
+
+.barraSuperior{
+  background-color: $primary;
+  height: 10%;
+}
+
+.title{
+  position: absolute;
+  margin-top: 10%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 34px;
+  line-height: 46px;
+}

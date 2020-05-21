@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import {connect} from 'react-redux';
 
-import ButtonK from '../../../../shared/components/inputs/ButtonK';
-import InputText from '../../../../shared/components/inputs/InputText';
-import ImageK from '../../../../shared/components/outputs/ImageK';
+import ButtonK from 'app/shared/components/inputs/ButtonK';
+import InputText from 'app/shared/components/inputs/InputText';
+import ImageK from 'app/shared/components/outputs/ImageK';
 
 import styles from '../../../../../assets/stylesheets/login.scss';
 import image from '../../../../../assets/imagenes/login.png';
@@ -50,18 +49,4 @@ const Login = ({authenticate}) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        loggedIn: state.login.loggedIn
-    }
-  }
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-        login: () => {
-            dispatch(login());
-        }
-    }
-  }
-
-  export default connect(mapStateToProps, mapDispatchToProps)(Login);
+  export default Login;

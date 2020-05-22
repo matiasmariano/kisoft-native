@@ -9,7 +9,7 @@ const Home = (props) => {
 
     let categorias = [{
         titulo: 'Gastronomia',
-        img: 'https://dam.ngenespanol.com/wp-content/uploads/2018/11/5-gastronomia-paises-mundo.png'
+        img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg'
     },
     {
         titulo: 'Aventura',
@@ -23,19 +23,19 @@ const Home = (props) => {
         titulo: 'Escapadas',
         img: 'https://www.actualidadviajes.com/wp-content/uploads/2017/09/escapada-fin-de-semana-equipaje.jpg'
     },{
-        titulo: 'Gastronomia',
-        img: 'https://dam.ngenespanol.com/wp-content/uploads/2018/11/5-gastronomia-paises-mundo.png'
+        titulo: 'Gastronomia 2',
+        img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg'
     },
     {
-        titulo: 'Aventura',
+        titulo: 'Aventura 2',
         img: 'https://live.mrf.io/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/934/7c6/9347c644653c46c9033dfed8415131ea/detenidos-seis-turistas-en-peru-por-defecar-y-causar-danos-en-machu-picchu.jpg?mtime=1579565836'
     },
     {
-        titulo: 'Bienestar',
+        titulo: 'Bienestar 2',
         img: 'https://www.bupasalud.com/sites/default/files/portada/2018-07/mobile/bienestar-bupa_767.jpg'
     },
     {
-        titulo: 'Escapadas',
+        titulo: 'Escapadas 2',
         img: 'https://www.actualidadviajes.com/wp-content/uploads/2017/09/escapada-fin-de-semana-equipaje.jpg'
     }]
 

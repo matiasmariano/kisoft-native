@@ -49,7 +49,6 @@ const Home = (props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.barraSuperior}></View>
             <ScrollView>
                 <Text style={styles.title}>Categorias</Text>
                 <Text style={styles.subtitle}>Encontrá las experiencias que más te interesan</Text>

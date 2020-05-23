@@ -15,5 +15,5 @@ export const useAuthentication = () => {
 
     const logout = () => (setUserData(undefined))
 
-    return { userData, authenticate }
+    return { userData, authenticate, logout }
 }

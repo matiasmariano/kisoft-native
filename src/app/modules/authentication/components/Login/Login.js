@@ -9,8 +9,10 @@ import ImageK from '../../../../shared/components/outputs/ImageK';
 import styles from '../../../../../assets/stylesheets/login.scss';
 import image from '../../../../../assets/imagenes/login.png';
 
+import { buttonStyle } from '../../../../../assets/style/ButtonStyle';
 
-const Login = ({authenticate}) => {
+
+const Login = ({ authenticate }) => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
@@ -36,7 +38,7 @@ const Login = ({authenticate}) => {
                     secureTextEntry={true}
                     value={pass} />
                 <ButtonK
-                    style={{ backgroundColor: '#E0273E', width: '80%', marginLeft: 'auto', marginRight: 'auto', borderRadius: 46 }}
+                    style={buttonStyle.login.login}
                     onPress={() => authenticate(user, pass)}
                     title={`Iniciar Sesion`} />
                 <ButtonK
@@ -49,4 +51,4 @@ const Login = ({authenticate}) => {
     )
 }
 
-  export default Login;
+export default Login;

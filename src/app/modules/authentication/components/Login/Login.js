@@ -15,7 +15,7 @@ const Login = ({authenticate}) => {
     const [pass, setPass] = useState('');
 
     return (
-        <View style={styles.barraSuperior}>
+        <View>
             <View>
                 <ImageK
                     containerStyle={{ width: '80%', marginLeft: 'auto', marginRight: 'auto' }}

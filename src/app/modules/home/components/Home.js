@@ -1,8 +1,5 @@
 import React from "react";
 import { View, Text, Image, ScrollView } from "react-native";
-import { Button } from 'react-native-elements';
-import { logout } from '../../authentication/actions/Actions';
-import {connect} from 'react-redux';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Home = (props) => {
@@ -56,34 +53,12 @@ const Home = (props) => {
                 <View style={styles.categoriasView}>
                     {categoriasList}
                 </View>
-                {/*<Text>KiSoft</Text>
-                <Button
-                    onPress={() => props.logout()}
-                    title={`Volver`} />
-
-                <Button
-                    onPress={() => props.navigation.openDrawer()}
-                title={`Abrir menu`} />*/}
             </ScrollView>
         </View>
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        loggedIn: state.login.loggedIn
-    }
-  }
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-        logout: () => {
-            dispatch(logout());
-        }
-    }
-  }
-
-  export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
 
 
   const styles = {

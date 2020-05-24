@@ -3,51 +3,32 @@ import { View, Text, Image, ScrollView } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Header from '../../../shared/components/header/Header';
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
 
+
+    //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let categorias = [{
         titulo: 'Gastronomia',
         img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg'
-    },
-    {
-        titulo: 'Aventura',
-        img: 'https://live.mrf.io/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/934/7c6/9347c644653c46c9033dfed8415131ea/detenidos-seis-turistas-en-peru-por-defecar-y-causar-danos-en-machu-picchu.jpg?mtime=1579565836'
-    },
-    {
-        titulo: 'Bienestar',
-        img: 'https://www.bupasalud.com/sites/default/files/portada/2018-07/mobile/bienestar-bupa_767.jpg'
-    },
-    {
-        titulo: 'Escapadas',
-        img: 'https://www.actualidadviajes.com/wp-content/uploads/2017/09/escapada-fin-de-semana-equipaje.jpg'
-    },{
-        titulo: 'Gastronomia 2',
-        img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg'
-    },
-    {
-        titulo: 'Aventura 2',
-        img: 'https://live.mrf.io/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/934/7c6/9347c644653c46c9033dfed8415131ea/detenidos-seis-turistas-en-peru-por-defecar-y-causar-danos-en-machu-picchu.jpg?mtime=1579565836'
-    },
-    {
-        titulo: 'Bienestar 2',
-        img: 'https://www.bupasalud.com/sites/default/files/portada/2018-07/mobile/bienestar-bupa_767.jpg'
-    },
-    {
-        titulo: 'Escapadas 2',
-        img: 'https://www.actualidadviajes.com/wp-content/uploads/2017/09/escapada-fin-de-semana-equipaje.jpg'
     }]
+    for (let index = 0; index < 6; index++) {
+        categorias.push(categorias[index])
 
+    }
+    //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    
     let categoriasList = categorias.map(categoria => {
-        return(
+        return (
             <View style={styles.categoriaContainer} key={`categoria_${categoria.titulo}`}>
-                <Image source={{uri: categoria.img}} style={styles.imagen}/>
+                <Image source={{ uri: categoria.img }} style={styles.imagen} />
             </View>
         )
     })
 
     return (
         <View style={styles.container}>
-               <Header navigation={navigation}/>
+            <Header navigation={navigation} />
             <ScrollView>
                 <Text style={styles.title}>Categorias</Text>
                 <Text style={styles.subtitle}>Encontrá las experiencias que más te interesan</Text>
@@ -63,7 +44,7 @@ const Home = ({navigation}) => {
 export default Home;
 
 
-  const styles = {
+const styles = {
     container: { flex: 1 },
     title: {
         marginTop: hp('2%'),
@@ -87,7 +68,7 @@ export default Home;
         color: '#E32028',
         marginLeft: 28
     },
-    categoriaContainer:{
+    categoriaContainer: {
         borderRadius: 13,
         shadowColor: "#000",
         shadowOffset: {
@@ -103,12 +84,12 @@ export default Home;
         marginTop: hp('1%'),
         height: hp('14%')
     },
-    categoriasView:{
-        flexDirection:'column',
+    categoriasView: {
+        flexDirection: 'column',
     },
     imagen: {
         width: '100%',
         height: '100%',
         borderRadius: 13,
     }
-  }
+}

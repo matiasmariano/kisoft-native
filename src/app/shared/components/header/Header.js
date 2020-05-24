@@ -11,7 +11,7 @@ const Header = ({ navigation }) => {
     return (
         <View style={headerStyle.barraSuperior}>
             <ButtonK
-                onPress={navigation.closeDrawer}
+                onPress={navigation.openDrawer}
                 title="Abrir"
                 style={buttonStyle.header} />
         </View>

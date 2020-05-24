@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Image, ScrollView } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import Header from '../../../shared/components/header/Header';
 
 const Home = ({ navigation }) => {
 
@@ -18,9 +17,9 @@ const Home = ({ navigation }) => {
     //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     
-    let categoriasList = categorias.map(categoria => {
+    let categoriasList = categorias.map((categoria, index) => {
         return (
-            <View style={styles.categoriaContainer} key={`categoria_${categoria.titulo}`}>
+            <View style={styles.categoriaContainer} key={`categoria_${categoria.titulo}_${index}`}>
                 <Image source={{ uri: categoria.img }} style={styles.imagen} />
             </View>
         )
@@ -28,7 +27,7 @@ const Home = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Header navigation={navigation} />
+            {/*<Header navigation={navigation} />*/}
             <ScrollView>
                 <Text style={styles.title}>Categorias</Text>
                 <Text style={styles.subtitle}>Encontrá las experiencias que más te interesan</Text>

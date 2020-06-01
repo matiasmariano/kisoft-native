@@ -7,6 +7,7 @@ import ButtonK from '../inputs/ButtonK';
 
 import Home from "../../../modules/home/components/Home";
 import Login from "../../../modules/authentication/components/Login/Login";
+import Cobro from "../../../modules/cobro/components/Cobro";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ const Aside = ({ logout }) => (
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen name="Home" component={HomeScreens} />
             <Drawer.Screen name="Logout" component={() => { return <ButtonK onPress={logout()} /> }} />
+            <Drawer.Screen name="Cobro" component={Cobro} />
         </Drawer.Navigator>
     </NavigationContainer>
 )

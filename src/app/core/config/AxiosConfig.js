@@ -1,13 +1,10 @@
 import Axios from 'axios';
-//import { LocalStorageHelper } from '../../shared/helpers/LocalStorageHelper';
-//import { store } from '../../Store';
 import { toast } from 'react-toastify';
 
-//const localStorageHelper = new LocalStorageHelper();
-//const { dispatch } = store;
 Axios.defaults.baseURL = process.env.REACT_APP_API_ENDPOINT;
 const public_key = 'e9cdb99fff374b5f91da4480c8dca741';
-const private_key = '92b71cf711ca41f78362a7134f87ff65';
+//const private_key = '92b71cf711ca41f78362a7134f87ff65';
+//Axios.defaults.baseURL = 'base_url';
 
 Axios.interceptors.request.use(
     request => requestHandler(request)

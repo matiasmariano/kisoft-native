@@ -10,8 +10,10 @@ export const usePayment = () => {
 
     const processPayment = async () => {
         let preProcessResponse = await Payment.init_process_payment();
-        alert(preProcessResponse.data.id);
-        //let id = preProcessResponse.id;
+        //alert(preProcessResponse.data.id);
+        
+        let paymentResponse = await Payment.process_payment(preProcessResponse.data.id);
+        //alert(JSON.stringify(paymentResponse));
     }
 
     return { apiStatus, setApiStatus, usePayment, getApiStatus, processPayment }

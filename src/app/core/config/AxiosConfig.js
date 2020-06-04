@@ -3,8 +3,6 @@ import { toast } from 'react-toastify';
 
 Axios.defaults.baseURL = process.env.REACT_APP_API_ENDPOINT;
 const public_key = 'e9cdb99fff374b5f91da4480c8dca741';
-//const private_key = '92b71cf711ca41f78362a7134f87ff65';
-//Axios.defaults.baseURL = 'base_url';
 
 Axios.interceptors.request.use(
     request => requestHandler(request)
@@ -16,7 +14,6 @@ Axios.interceptors.response.use(
 )
 
 const requestHandler = (request) => {
-    //dispatch({ type: "LOADING_ON" });
     if (isHandlerEnabled(request)) {
         if (request.url.includes('decidir')){
             request.headers['Content-Type'] = 'application/json';
@@ -34,12 +31,7 @@ const isHandlerEnabled = (config = {}) => {
 
 //Interceptor de responce ERROR.
 const errorHandler = (error) => {
-    //dispatch({ type: "LOADING_OFF" });
     let errorMessage = 'Error de conexion';
-    /*if (error.response.status === 401) {    //Si es 401, elimina la data del usuario.
-        localStorageHelper.setItem('userToken', null);
-        localStorageHelper.setItem('userRols', null);
-    }*/
 
     if (error.response) {
         switch (error.response.status.toString()) {
@@ -49,7 +41,7 @@ const errorHandler = (error) => {
             }
         }
     }
-
+    //alert(`response: ${JSON.stringify(error)}`);
     return {
         error: {
             code: error.response.status.toString(), errorMessage: errorMessage
@@ -60,9 +52,6 @@ const errorHandler = (error) => {
 
 //Interceptor de responce OK.
 const successHandler = (response) => {
-    //dispatch({ type: "LOADING_OFF" });
-    alert(`response: ${JSON.stringify(response.data)}`);
-    return {
-        data: response.data, error: undefined
-    }
+    //alert(`response: ${JSON.stringify(response.data)}`);
+    return response;
 }

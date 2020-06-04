@@ -3,8 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { usePayment } from '../../../shared/hooks/payment';
 
 const Cobro = () => {
-    const { apiStatus, setApiStatus, getApiStatus } = usePayment();
+    const { apiStatus, setApiStatus, getApiStatus, processPayment } = usePayment();
     getApiStatus();
+    processPayment();
 
     return (
         <View>

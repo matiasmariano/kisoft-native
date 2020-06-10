@@ -16,18 +16,23 @@ const Home = ({ navigation }) => {
     }
     //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    
-    let categoriasList = categorias.map((categoria, index) => {
-        return (
-            <View style={styles.categoriaContainer} key={`categoria_${categoria.titulo}_${index}`}>
-                <Image source={{ uri: categoria.img }} style={styles.imagen} />
-            </View>
+    let categoriasList = []
+    for (let i = 0; i < categorias.length; i += 2) {
+        categoriasList.push(
+            <>
+                {categorias[i] && <View style={styles.categoriaContainer} key={`categoria_${i}`}>
+                    <Image source={{ uri: categorias[i].img }} style={styles.imagen} />
+                </View>}
+                {categorias[i + 1] && <View style={styles.categoriaContainer} key={`categoria_${i + 1}`}>
+                    <Image source={{ uri: categorias[i + 1].img }} style={styles.imagen} />
+                </View>}
+            </>
         )
-    })
+
+    }
 
     return (
         <View style={styles.container}>
-            {/*<Header navigation={navigation} />*/}
             <ScrollView>
                 <Text style={styles.title}>Categorias</Text>
                 <Text style={styles.subtitle}>Encontrá las experiencias que más te interesan</Text>
@@ -49,10 +54,11 @@ const styles = {
         marginTop: hp('2%'),
         height: hp('5%'),
         fontStyle: 'normal',
-        fontWeight: 'normal',
+        fontWeight: '500',
         fontSize: 34,
         lineHeight: 46,
-        marginLeft: 28
+        marginLeft: 28,
+        color: "#2d2c2c"
     },
     barraSuperior: {
         backgroundColor: 'rgb(227, 0, 27)',
@@ -64,7 +70,7 @@ const styles = {
         fontWeight: 'normal',
         fontSize: 14.2,
         lineHeight: 19,
-        color: '#E32028',
+        color: '#4e4e4e',
         marginLeft: 28
     },
     categoriaContainer: {
@@ -79,7 +85,7 @@ const styles = {
         elevation: 4,
         backgroundColor: '#FFFFFF',
         marginLeft: 28,
-        width: wp('90%'),
+        width: wp('40%'),
         marginTop: hp('1%'),
         height: hp('14%')
     },

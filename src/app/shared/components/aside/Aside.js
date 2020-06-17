@@ -43,7 +43,7 @@ const options = ({ navigation, route }) => ({
       (
         <Icon
           name="ios-menu"
-          size={"40%"}
+          size={40}
           color="#ffffff"
           style={{
             marginLeft: 20
@@ -55,7 +55,7 @@ const options = ({ navigation, route }) => ({
       (
         <AntDesign
           name="left"
-          size={"30%"}
+          size={30}
           color="#ffffff"
           style={{
             marginLeft: 15

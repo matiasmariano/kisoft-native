@@ -24,8 +24,8 @@ function HomeScreens() {
 }
 
 const Aside = ({ logout }) => (
-  <NavigationContainer>
-    <Drawer.Navigator initialRouteName="Home" >
+  <NavigationContainer theme={styles.theme}>
+    <Drawer.Navigator initialRouteName="Home" drawerContentOptions={{itemStyle: styles.items, labelStyle: styles.label}} >
       <Drawer.Screen name="Home" component={HomeScreens} />
       <Drawer.Screen name="Logout" component={() => { return <ButtonK onPress={logout()} /> }} />
       <Drawer.Screen name="Cobro" component={Cobro} />
@@ -64,3 +64,24 @@ const options = ({ navigation, route }) => ({
         />
       )
 })
+
+const styles = {
+  items: { 
+    marginVertical: 10,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+    paddingLeft: 0,
+    marginLeft: 0,
+    fontSize: 19
+  },
+  label: {
+    fontSize: 15,
+    color: 'white'
+  },
+  theme:{
+    colors: {
+      primary: 'red',
+      card: 'rgb(76, 76, 77)',
+    }
+  }
+}

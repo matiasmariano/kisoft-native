@@ -76,7 +76,8 @@ const styles = {
   },
   label: {
     fontSize: 15,
-    color: 'white'
+    color: 'white',
+    marginLeft: 24
   },
   theme:{
     colors: {

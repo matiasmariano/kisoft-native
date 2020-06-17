@@ -85,7 +85,7 @@ const styles = {
         elevation: 4,
         backgroundColor: '#FFFFFF',
         marginLeft: 28,
-        width: wp('40%'),
+        width: wp('85%'),
         marginTop: hp('1%'),
         height: hp('14%')
     },

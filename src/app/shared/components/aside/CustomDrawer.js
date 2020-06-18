@@ -13,30 +13,28 @@ class CustomDrawer extends Component {
         const { navigation } = this.props;
 
         return (
-            <View>
-                <View style={styles.screenContainer}>
-                    <View>
-                        <Text style={styles.name}>My Name</Text>
-                        <Text style={styles.email}>MyEmail@hotmail.com</Text>
-                    </View>
-                    <Divider style={styles.divider} />
-                    <View style={[styles.screenStyle, this.state.activeItemKey =='Home' ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Home' ? styles.selectedTextStyle : null]} 
-                        onPress={() => {
-                            this.setState({activeItemKey: 'Home'});
-                            navigation.navigate('Home');
-                        }}>Home</Text>
-                    </View>
-                    <View style={[styles.screenStyle, this.state.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]} onPress={() => {
-                            this.setState({activeItemKey: 'Cobro'});
-                            navigation.navigate('Cobro');
-                        }}>Cobro</Text>
-                    </View>
-                    <Divider style={styles.divider} />
-                    <View>
-                        <Text style={styles.screenTextStyle} onPress={() => this.props.logout()}>Cerrar Sesion</Text>
-                    </View>
+            <View style={styles.screenContainer}>
+                <View>
+                    <Text style={styles.name}>My Name</Text>
+                    <Text style={styles.email}>MyEmail@hotmail.com</Text>
+                </View>
+                <Divider style={styles.divider} />
+                <View style={[styles.screenStyle, this.state.activeItemKey =='Home' ? styles.activeBackgroundColor : null]}>
+                    <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Home' ? styles.selectedTextStyle : null]} 
+                    onPress={() => {
+                        this.setState({activeItemKey: 'Home'});
+                        navigation.navigate('Home');
+                    }}>Home</Text>
+                </View>
+                <View style={[styles.screenStyle, this.state.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
+                    <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]} onPress={() => {
+                        this.setState({activeItemKey: 'Cobro'});
+                        navigation.navigate('Cobro');
+                    }}>Cobro</Text>
+                </View>
+                <Divider style={styles.bottomDivider} />
+                <View style={styles.cerrarSesion}>
+                    <Text style={styles.screenTextStyle} onPress={() => this.props.logout()}>Cerrar Sesion</Text>
                 </View>
             </View>
         );
@@ -47,8 +45,9 @@ export default CustomDrawer;
 
 const styles = {
     screenContainer: { 
-        paddingTop: 50,
+        paddingTop: 80,
         width: '100%',
+        flex: 1
     },
     screenStyle: {
         height: 30,
@@ -80,6 +79,15 @@ const styles = {
         marginBottom: 39,
         marginTop: 39,
     },
+    bottomDivider: {
+        backgroundColor: 'white',
+        width: '60%',
+        marginLeft: 24,
+        marginBottom: 39,
+        marginTop: 39,
+        position: 'absolute',
+        bottom: 70
+    },
     name:{
         fontWeight: 'normal',
         fontSize: 22,
@@ -93,5 +101,9 @@ const styles = {
         lineHeight: 21,
         marginLeft: 24,
         color: 'white'
+    },
+    cerrarSesion: {
+        position: 'absolute',
+        bottom: 45
     }
 };

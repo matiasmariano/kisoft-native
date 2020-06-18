@@ -25,12 +25,20 @@ function HomeScreens() {
   );
 }
 
+function CobroScreens() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Cobro" component={Cobro} options={options} />
+    </Stack.Navigator>
+  );
+}
+
 const Aside = ({ logout }) => (
   <NavigationContainer theme={styles.theme}>
     <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout}/>}>
       <Drawer.Screen name="Home" component={HomeScreens} />
       <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
-      <Drawer.Screen name="Cobro" component={Cobro} />
+      <Drawer.Screen name="Cobro" component={CobroScreens} />
     </Drawer.Navigator>
   </NavigationContainer>
 )

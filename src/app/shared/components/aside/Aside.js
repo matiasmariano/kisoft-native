@@ -12,6 +12,8 @@ import Home from "../../../modules/home/components/Home";
 import Login from "../../../modules/authentication/components/Login/Login";
 import Cobro from "../../../modules/cobro/components/Cobro";
 
+import CustomDrawer from './CustomDrawer';
+
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -25,9 +27,9 @@ function HomeScreens() {
 
 const Aside = ({ logout }) => (
   <NavigationContainer theme={styles.theme}>
-    <Drawer.Navigator initialRouteName="Home" drawerContentOptions={{itemStyle: styles.items, labelStyle: styles.label}} >
+    <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout}/>}>
       <Drawer.Screen name="Home" component={HomeScreens} />
-      <Drawer.Screen name="Logout" component={() => { return <ButtonK onPress={logout()} /> }} />
+      <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
       <Drawer.Screen name="Cobro" component={Cobro} />
     </Drawer.Navigator>
   </NavigationContainer>
@@ -66,19 +68,6 @@ const options = ({ navigation, route }) => ({
 })
 
 const styles = {
-  items: { 
-    marginVertical: 10,
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-    paddingLeft: 0,
-    marginLeft: 0,
-    fontSize: 19
-  },
-  label: {
-    fontSize: 15,
-    color: 'white',
-    marginLeft: 24
-  },
   theme:{
     colors: {
       primary: 'red',

@@ -5,16 +5,15 @@ import {NavigationActions} from 'react-navigation';
 
 
 class CustomDrawer extends Component {
-
-    navigateToScreen = ( route ) =>{
-        const navigateAction = NavigationActions.navigate({
-            routeName: route
-        });
-        return navigateAction;
+    constructor(props){
+        super(props);
+        this.state = {activeItemKey: 'Home'};
     }
 
     render(){
-        
+    
+        const { navigation, screen } = this.props;
+        console.log(navigation);
         return (
             <View>
                 <View style={styles.screenContainer}>
@@ -23,11 +22,18 @@ class CustomDrawer extends Component {
                         <Text style={styles.email}>MyEmail@hotmail.com</Text>
                     </View>
                     <Divider style={styles.divider} />
-                    <View style={[styles.screenStyle, this.props.activeItemKey =='Home' ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey =='Home') ? styles.selectedTextStyle : null]} onPress={() => this.props.navigation.navigate('Home')}>Home</Text>
+                    <View style={[styles.screenStyle, this.state.activeItemKey =='Home' ? styles.activeBackgroundColor : null]}>
+                        <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Home' ? styles.selectedTextStyle : null]} 
+                        onPress={() => {
+                            this.setState({activeItemKey: 'Home'});
+                            navigation.navigate('Home');
+                        }}>Home</Text>
                     </View>
-                    <View style={[styles.screenStyle, this.props.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, this.props.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]} onPress={() =>  this.props.navigation.navigate('Cobro')}>Cobro</Text>
+                    <View style={[styles.screenStyle, this.state.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
+                        <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]} onPress={() => {
+                            this.setState({activeItemKey: 'Cobro'});
+                            navigation.navigate('Cobro');
+                        }}>Cobro</Text>
                     </View>
                     <Divider style={styles.divider} />
                     <View>
@@ -51,26 +57,30 @@ const styles = {
         marginTop: 2,
         flexDirection: 'row',
         alignItems: 'center',
-        width: '100%'
+        width: '70%',
+        height: 47
     },
     screenTextStyle:{
         fontSize: 15,
         color: 'white',
-        marginLeft: 24
+        marginLeft: 24,
+        height: 22
     },
     selectedTextStyle: {
         fontWeight: 'bold',
-        color: 'red'
+        color: 'white',
     },
     activeBackgroundColor: {
-        backgroundColor: 'red'
+        backgroundColor: '#EF384D',
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 20,
     },
     divider:{
         backgroundColor: 'white',
         width: '60%',
         marginLeft: 24,
         marginBottom: 39,
-        marginTop: 39
+        marginTop: 39,
     },
     name:{
         fontWeight: 'normal',

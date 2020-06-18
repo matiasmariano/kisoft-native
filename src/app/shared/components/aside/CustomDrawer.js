@@ -1,31 +1,42 @@
 import React, {Component} from 'react';
 import {Text, View, Button} from 'react-native';
 import { Divider } from 'react-native-elements';
+import {NavigationActions} from 'react-navigation';
 
-const CustomDrawer = ({navigation, logout, activeItemKey}) => {
-  return (
-    <View>
-        <Text>{JSON.stringify(navigation)}</Text>
 
-        <View style={styles.screenContainer}>
+class CustomDrawer extends Component {
+
+    navigateToScreen = ( route ) =>{
+        const navigateAction = NavigationActions.navigate({
+            routeName: route
+        });
+        return navigateAction;
+    }
+
+    render(){
+        
+        return (
             <View>
-                <Text style={styles.name}>My Name</Text>
-                <Text style={styles.email}>MyEmail@hotmail.com</Text>
+                <View style={styles.screenContainer}>
+                    <View>
+                        <Text style={styles.name}>My Name</Text>
+                        <Text style={styles.email}>MyEmail@hotmail.com</Text>
+                    </View>
+                    <Divider style={styles.divider} />
+                    <View style={[styles.screenStyle, this.props.activeItemKey =='Home' ? styles.activeBackgroundColor : null]}>
+                        <Text style={[styles.screenTextStyle, (this.props.activeItemKey =='Home') ? styles.selectedTextStyle : null]} onPress={() => this.props.navigation.navigate('Home')}>Home</Text>
+                    </View>
+                    <View style={[styles.screenStyle, this.props.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
+                        <Text style={[styles.screenTextStyle, this.props.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]} onPress={() =>  this.props.navigation.navigate('Cobro')}>Cobro</Text>
+                    </View>
+                    <Divider style={styles.divider} />
+                    <View>
+                        <Text style={styles.screenTextStyle} onPress={() => this.props.logout()}>Cerrar Sesion</Text>
+                    </View>
+                </View>
             </View>
-            <Divider style={styles.divider} />
-            <View style={[styles.screenStyle, (activeItemKey=='Home') ? styles.activeBackgroundColor : null]}>
-                <Text style={[styles.screenTextStyle, (activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={() => navigation.navigate('Home')}>Home</Text>
-            </View>
-            <View style={[styles.screenStyle, (activeItemKey=='Cobro') ? styles.activeBackgroundColor : null]}>
-                <Text style={[styles.screenTextStyle, (activeItemKey=='Cobro') ? styles.selectedTextStyle : null]} onPress={() => navigation.navigate('Cobro')}>Cobro</Text>
-            </View>
-            <Divider style={styles.divider} />
-            <View style={[styles.screenStyle, (activeItemKey=='Cerrar Sesion') ? styles.activeBackgroundColor : null]}>
-                <Text style={[styles.screenTextStyle, (activeItemKey=='Cerrar Sesion') ? styles.selectedTextStyle : null]} onPress={() => logout()}>Cerrar Sesion</Text>
-            </View>
-        </View>
-    </View>
-  );
+        );
+    }
 };
 
 export default CustomDrawer;
@@ -49,6 +60,7 @@ const styles = {
     },
     selectedTextStyle: {
         fontWeight: 'bold',
+        color: 'red'
     },
     activeBackgroundColor: {
         backgroundColor: 'red'

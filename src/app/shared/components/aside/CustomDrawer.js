@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, Button} from 'react-native';
 import { Divider } from 'react-native-elements';
-import {NavigationActions} from 'react-navigation';
-
 
 class CustomDrawer extends Component {
     constructor(props){
@@ -12,8 +10,8 @@ class CustomDrawer extends Component {
 
     render(){
     
-        const { navigation, screen } = this.props;
-        console.log(navigation);
+        const { navigation } = this.props;
+
         return (
             <View>
                 <View style={styles.screenContainer}>

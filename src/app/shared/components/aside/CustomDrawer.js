@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Text, View, Button} from 'react-native';
 import { Divider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 class CustomDrawer extends Component {
     constructor(props){
@@ -34,7 +36,10 @@ class CustomDrawer extends Component {
                 </View>
                 <Divider style={styles.bottomDivider} />
                 <View style={styles.cerrarSesion}>
-                    <Text style={styles.screenTextStyle} onPress={() => this.props.logout()}>Cerrar Sesion</Text>
+                    <Text style={[styles.screenTextStyle]}>
+                        <Icon name="ios-log-out" size={15} color="white"/>   
+                        <Text onPress={() => this.props.logout()}>{'   '}Cerrar Sesion</Text>
+                    </Text>
                 </View>
             </View>
         );

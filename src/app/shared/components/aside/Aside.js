@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
@@ -67,18 +67,19 @@ function options(navigation, route){
         :
         (
           <View>
-            <Text>
-              <AntDesign
-                name="left"
-                size={25}
-                color="#ffffff"
-                style={{
-                  marginLeft: 15
-                }}
-                onPress={() => navigation.goBack()}
-              />
-              <Text style={styles.featureName}>{`   ${route.name}`}</Text>
-            </Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text>
+                  <AntDesign
+                    name="left"
+                    size={25}
+                    color="#ffffff"
+                    style={{
+                      marginLeft: 15
+                    }}
+                  />
+                  <Text style={styles.featureName}>{`   ${route.name}`}</Text>
+              </Text>
+            </TouchableOpacity>
           </View>
         )
   })

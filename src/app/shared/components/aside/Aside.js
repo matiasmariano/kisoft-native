@@ -77,7 +77,7 @@ function options(navigation, route){
                 }}
                 onPress={() => navigation.goBack()}
               />
-              <Text style={styles.featureName}>{route.name}</Text>
+              <Text style={styles.featureName}>{`   ${route.name}`}</Text>
             </Text>
           </View>
         )

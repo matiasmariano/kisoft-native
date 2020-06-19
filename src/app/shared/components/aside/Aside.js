@@ -11,6 +11,7 @@ import ButtonK from '../inputs/ButtonK';
 import Home from "../../../modules/home/components/Home";
 import Login from "../../../modules/authentication/components/Login/Login";
 import Cobro from "../../../modules/cobro/components/Cobro";
+import Categoria from "../../../modules/categoria/components/Categoria";
 
 import CustomDrawer from './CustomDrawer';
 
@@ -19,8 +20,9 @@ const Stack = createStackNavigator();
 
 function HomeScreens() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={options} />
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => ( options(navigation, route) )} />
+      <Stack.Screen name="Gastronomia" component={Categoria} options={({ route, navigation }) => ( options(navigation, route) )} />
     </Stack.Navigator>
   );
 }
@@ -28,7 +30,7 @@ function HomeScreens() {
 function CobroScreens() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Cobro" component={Cobro} options={options} />
+      <Stack.Screen name="Cobro" component={Cobro} options={({ route, navigation }) => ( options(navigation, route) )} />
     </Stack.Navigator>
   );
 }
@@ -45,35 +47,37 @@ const Aside = ({ logout }) => (
 
 export default Aside;
 
-const options = ({ navigation, route }) => ({
-  headerTitle: '',
-  headerStyle: { backgroundColor: 'rgb(227, 0, 27)' },
-  headerLeft: () =>
-    1 == 1 ?
-      (
-        <Icon
-          name="ios-menu"
-          size={40}
-          color="#ffffff"
-          style={{
-            marginLeft: 20
-          }}
-          onPress={() => navigation.openDrawer()}
-        />
-      )
-      :
-      (
-        <AntDesign
-          name="left"
-          size={30}
-          color="#ffffff"
-          style={{
-            marginLeft: 15
-          }}
-          onPress={() => navigation.navigate('NOMBRE_PANTALLA_VER_COMO_PASAR_POR_PARAMETRO')}
-        />
-      )
-})
+function options(navigation, route){
+  return ({
+    headerTitle: '',
+    headerStyle: { backgroundColor: 'rgb(227, 0, 27)' },
+    headerLeft: () => 
+      route.name == 'Home' ?
+        (
+          <Icon
+            name="ios-menu"
+            size={40}
+            color="#ffffff"
+            style={{
+              marginLeft: 20
+            }}
+            onPress={() => navigation.openDrawer()}
+          />
+        )
+        :
+        (
+          <AntDesign
+            name="left"
+            size={30}
+            color="#ffffff"
+            style={{
+              marginLeft: 15
+            }}
+            onPress={() => navigation.goBack()}
+          />
+        )
+  })
+}
 
 const styles = {
   theme:{

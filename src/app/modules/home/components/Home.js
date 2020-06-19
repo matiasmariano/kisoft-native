@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Home = ({ navigation }) => {
@@ -8,24 +8,35 @@ const Home = ({ navigation }) => {
     //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let categorias = [{
         titulo: 'Gastronomia',
-        img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg'
+        img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg',
+        catalogo: [{
+            imagen: 'https://gastronomiaycia.republica.com/wp-content/uploads/2017/10/mastergastronomiaesah2017-680x453.jpg',
+            titulo: 'El balon',
+            puntuacion: 3,
+            descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
+            costo: 40000,
+            ubicacion: 'Quilmes papi',
+            cantidad_personas: 2
+        },{
+            imagen: 'https://www.mexicodesconocido.com.mx/assets/images/destinos/teotihuacan/actividades/72_Teotihuacan_Escamoles4.jpg',
+            titulo: 'El balonaso',
+            puntuacion: 4,
+            descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
+            costo: 35000,
+            ubicacion: 'A la vuelta de la ezquina',
+            cantidad_personas: 2
+        }]
     }]
-    for (let index = 0; index < 6; index++) {
-        categorias.push(categorias[index])
-
-    }
     //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     let categoriasList = []
-    for (let i = 0; i < categorias.length; i += 2) {
+    for (let i = 0; i < categorias.length; i += 1) {
         categoriasList.push(
             <>
-                {categorias[i] && <View style={styles.categoriaContainer} key={`categoria_${i}`}>
+                {categorias[i] && 
+                <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${i}`} onPress={() => navigation.navigate(`${categorias[i].titulo}`)}>
                     <Image source={{ uri: categorias[i].img }} style={styles.imagen} />
-                </View>}
-                {categorias[i + 1] && <View style={styles.categoriaContainer} key={`categoria_${i + 1}`}>
-                    <Image source={{ uri: categorias[i + 1].img }} style={styles.imagen} />
-                </View>}
+                </TouchableHighlight>}
             </>
         )
 

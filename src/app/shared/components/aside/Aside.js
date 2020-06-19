@@ -66,15 +66,20 @@ function options(navigation, route){
         )
         :
         (
-          <AntDesign
-            name="left"
-            size={30}
-            color="#ffffff"
-            style={{
-              marginLeft: 15
-            }}
-            onPress={() => navigation.goBack()}
-          />
+          <View>
+            <Text>
+              <AntDesign
+                name="left"
+                size={25}
+                color="#ffffff"
+                style={{
+                  marginLeft: 15
+                }}
+                onPress={() => navigation.goBack()}
+              />
+              <Text style={styles.featureName}>{route.name}</Text>
+            </Text>
+          </View>
         )
   })
 }
@@ -85,5 +90,9 @@ const styles = {
       primary: 'red',
       card: 'rgb(76, 76, 77)',
     }
+  },
+  featureName:{
+    color: 'white',
+    fontSize: 25
   }
 }

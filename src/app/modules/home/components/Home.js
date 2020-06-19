@@ -34,7 +34,7 @@ const Home = ({ navigation }) => {
         categoriasList.push(
             <>
                 {categorias[i] && 
-                <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${i}`} onPress={() => navigation.navigate(`${categorias[i].titulo}`)}>
+                <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${i}`} onPress={() => navigation.navigate(`${categorias[i].titulo}`, {catalogo: categorias[i].catalogo })}>
                     <Image source={{ uri: categorias[i].img }} style={styles.imagen} />
                 </TouchableHighlight>}
             </>

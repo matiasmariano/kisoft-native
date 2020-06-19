@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { View, Text } from 'react-native';
 
-const Categoria = ({ navigation }) => {
+const Categoria = ({ navigation, route }) => {
     return (
         <View style={styles.container}>
-            <Text>Test</Text>
+            <Text>{JSON.stringify(route.params)}</Text>
         </View>
     );
 };

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import Account from '../services/Account'
 
 export const useAuthentication = () => {
     const [userData, setUserData] = useState(undefined)

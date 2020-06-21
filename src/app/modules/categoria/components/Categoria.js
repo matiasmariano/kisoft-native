@@ -65,7 +65,7 @@ const styles = {
         backgroundColor: 'white',
         marginLeft: '10%',
         marginTop: '-9%',
-        borderRadius: '8px',
+        borderRadius: 8,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.5,
@@ -75,8 +75,8 @@ const styles = {
         width: '100%',
         height: '5%',
         backgroundColor: 'rgb(227, 0, 27)',
-        borderBottomLeftRadius: '25',
-        borderBottomRightRadius: '25'
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25
     },
     container: {
         backgroundColor: 'white',

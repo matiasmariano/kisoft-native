@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { Rating } from 'react-native-ratings';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Categoria = ({ navigation, route }) => {
 
@@ -21,6 +22,20 @@ const Categoria = ({ navigation, route }) => {
                     style={{ paddingLeft: 0, alignItems: 'flex-start', marginLeft: '5%', marginTop: 5 }}
                 />
                 <Text style={styles.descripcion} numberOfLines={3}>{oferta.descripcion}</Text>
+
+                <View>
+                    <Text style={[styles.screenTextStyle]}>
+                        <Icon name="ios-pin" size={15} color="#E42028"/>   
+                        <Text>{` ${oferta.ubicacion}`}</Text>
+                    </Text>
+                </View>
+
+                <View>
+                    <Text style={[styles.screenTextStyle]}>
+                        <Icon name="ios-person" size={15} color="#E42028"/>   
+                        <Text>{` Para ${oferta.cantidad_personas} personas`}</Text>
+                    </Text>
+                </View>
             </View>
         )
     })
@@ -73,23 +88,28 @@ const styles = {
     },
     imagen: {
         width: '90%',
-        height: 150,
+        height: 212,
         marginLeft: 'auto',
         marginRight: 'auto',
+        borderRadius: 21,
     },
     categoriaContainer: {
         marginTop: 40
     },
     titulo: {
         fontWeight: 'bold',
-        marginTop: 5,
-        marginLeft: '5%'
+        marginTop: 11,
+        marginLeft: '5%',
+        fontSize: 19
     },
     descripcion: {
         marginTop: 5,
         marginLeft: 'auto',
         marginRight: 'auto',
         width: '90%',
+        fontSize: 11,
+        lineHeight: 15,
+        fontWeight: 'normal'
     },
     rating: {
         marginLeft: '5%'
@@ -99,5 +119,9 @@ const styles = {
         height: '1%',
         width: '75%',
         margin: 2
+    },
+    screenTextStyle: {
+        marginLeft: 20,
+        marginTop: 6
     }
 };

@@ -61,7 +61,7 @@ export default Categoria;
 const styles = {
     pointsContainer: {
         width: '80%',
-        height: '11%',
+        height: '13%',
         backgroundColor: 'white',
         marginLeft: '10%',
         marginTop: '-12%',
@@ -70,7 +70,8 @@ const styles = {
         shadowOpacity: 0.5,
         alignItems: 'center',
         padding: 10,
-        borderRadius: 15
+        borderRadius: 15,
+        elevation: 4,
     }, extenderHead: {
         width: '100%',
         height: '6%',

@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
+import IconAwasome from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import ButtonK from '../inputs/ButtonK';
@@ -21,8 +22,8 @@ const Stack = createStackNavigator();
 function HomeScreens() {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => ( options(navigation, route) )} />
-      <Stack.Screen name="Gastronomia" component={Categoria} options={({ route, navigation }) => ( options(navigation, route) )} />
+      <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route))} />
+      <Stack.Screen name="Gastronomia" component={Categoria} options={({ route, navigation }) => (options(navigation, route))} />
     </Stack.Navigator>
   );
 }
@@ -30,14 +31,14 @@ function HomeScreens() {
 function CobroScreens() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Cobro" component={Cobro} options={({ route, navigation }) => ( options(navigation, route) )} />
+      <Stack.Screen name="Cobro" component={Cobro} options={({ route, navigation }) => (options(navigation, route))} />
     </Stack.Navigator>
   );
 }
 
 const Aside = ({ logout }) => (
   <NavigationContainer theme={styles.theme}>
-    <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout}/>}>
+    <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout} />}>
       <Drawer.Screen name="Home" component={HomeScreens} />
       <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
       <Drawer.Screen name="Cobro" component={CobroScreens} />
@@ -47,11 +48,27 @@ const Aside = ({ logout }) => (
 
 export default Aside;
 
-function options(navigation, route){
+function options(navigation, route) {
   return ({
-    headerTitle: '',
-    headerStyle: { backgroundColor: 'rgb(227, 0, 27)', shadowColor: 'transparent' , aligneSelf: 'center' },
-    headerLeft: () => 
+    headerTitle: getNameByRoute(route.name),
+    headerStyle: { backgroundColor: 'rgb(227, 0, 27)', color: 'red', shadowColor: 'transparent', aligneSelf: 'center' },
+    headerTitleStyle: {
+      color: '#ffffff',
+      fontSize: 30,
+      fontWeight: '400'
+    },
+    headerRight: () => (
+      <IconAwasome
+        name="filter"
+        size={25}
+        color="#ffffff"
+        style={{
+          marginRight: 20
+        }}
+        onPress={() => {}}
+      />
+    ),
+    headerLeft: () =>
       route.name == 'Home' ?
         (
           <Icon
@@ -66,33 +83,38 @@ function options(navigation, route){
         )
         :
         (
-          <View>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Text>
-                  <AntDesign
-                    name="left"
-                    size={25}
-                    color="#ffffff"
-                    style={{
-                      marginLeft: 15
-                    }}
-                  />
-                  <Text style={styles.featureName}>{`   ${route.name}`}</Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
+          <IconAwasome
+            name="arrow-circle-left"
+            size={35}
+            color="#ffffff"
+            style={{
+              marginLeft: 20
+            }}
+            onPress={() => navigation.goBack()}
+          />
         )
   })
 }
 
+const getNameByRoute = (route) => {
+  switch (route) {
+    case 'Gastronomia':
+      return 'Gastronomía'
+      break;
+    default:
+      return '';
+      break;
+  }
+}
+
 const styles = {
-  theme:{
+  theme: {
     colors: {
       primary: 'red',
       card: 'rgb(76, 76, 77)',
     }
   },
-  featureName:{
+  featureName: {
     color: 'white',
     fontSize: 25
   }

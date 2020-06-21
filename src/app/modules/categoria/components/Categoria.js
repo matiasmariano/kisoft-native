@@ -64,19 +64,19 @@ const styles = {
         height: '11%',
         backgroundColor: 'white',
         marginLeft: '10%',
-        marginTop: '-9%',
-        borderRadius: '8px',
+        marginTop: '-12%',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.5,
         alignItems: 'center',
-        padding: 10
+        padding: 10,
+        borderRadius: 15
     }, extenderHead: {
         width: '100%',
-        height: '5%',
+        height: '6%',
         backgroundColor: 'rgb(227, 0, 27)',
-        borderBottomLeftRadius: '25',
-        borderBottomRightRadius: '25'
+        borderBottomLeftRadius: '30',
+        borderBottomRightRadius: '30'
     },
     container: {
         backgroundColor: 'white',

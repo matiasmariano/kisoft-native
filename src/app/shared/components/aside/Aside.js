@@ -50,7 +50,7 @@ export default Aside;
 function options(navigation, route){
   return ({
     headerTitle: '',
-    headerStyle: { backgroundColor: 'rgb(227, 0, 27)' },
+    headerStyle: { backgroundColor: 'rgb(227, 0, 27)', shadowColor: 'transparent' , aligneSelf: 'center' },
     headerLeft: () => 
       route.name == 'Home' ?
         (

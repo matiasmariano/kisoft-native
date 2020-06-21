@@ -59,19 +59,16 @@ const Categoria = ({ navigation, route }) => {
 export default Categoria;
 
 const styles = {
-    body: {
-        position: 'relative'
-    },
     pointsContainer: {
         width: '80%',
-        height: '9%',
+        height: '11%',
         backgroundColor: 'white',
         marginLeft: '10%',
-        marginTop: '-7%',
+        marginTop: '-9%',
         borderRadius: '8px',
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.5,
         alignItems: 'center',
         padding: 10
     }, extenderHead: {
@@ -84,7 +81,7 @@ const styles = {
     container: {
         backgroundColor: 'white',
         height: '100%',
-        marginTop: 10
+        marginTop: '2%'
     },
     imagen: {
         width: '90%',
@@ -94,7 +91,7 @@ const styles = {
         borderRadius: 21,
     },
     categoriaContainer: {
-        marginTop: 40
+        marginTop: '5%'
     },
     titulo: {
         fontWeight: 'bold',
@@ -118,10 +115,13 @@ const styles = {
         backgroundColor: 'black',
         height: '1%',
         width: '75%',
-        margin: 2
+        margin: 5
     },
     screenTextStyle: {
         marginLeft: 20,
         marginTop: 6
+    },
+    body:{
+        backgroundColor: '#ffffff'
     }
 };

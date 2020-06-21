@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { useNotifications } from '../../../../shared/hooks/notifications'
 
 import ButtonK from '../../../../shared/components/inputs/ButtonK';
 import InputText from '../../../..//shared/components/inputs/InputText';
@@ -13,9 +14,12 @@ import { buttonStyle } from '../../../../../assets/style/ButtonStyle';
 
 
 const Login = ({ authenticate }) => {
+    const { token, getToken } = useNotifications()
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
+    getToken()
+    
     return (
         <View>
             <View>

@@ -6,15 +6,14 @@ export const usePayment = () => {
 
     const getApiStatus = async () => {
         let accountResponse = await Payment.get_api_status();
+        if (setApiStatus.okResponse)
+            setApiStatus(accountResponse.response)
     }
 
-    const processPayment = async () => {
-        let preProcessResponse = await Payment.init_process_payment();
-        //alert(preProcessResponse.data.id);
-        
-        let paymentResponse = await Payment.process_payment(preProcessResponse.data.id);
-        //alert(JSON.stringify(paymentResponse));
+    const processPayment = async (params) => {
+        let result = await Payment.init_process_payment(params);
+        return result
     }
 
-    return { apiStatus, setApiStatus, usePayment, getApiStatus, processPayment }
+    return { apiStatus, getApiStatus, processPayment }
 }

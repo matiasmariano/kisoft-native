@@ -75,8 +75,8 @@ const styles = {
         width: '100%',
         height: '6%',
         backgroundColor: 'rgb(227, 0, 27)',
-        borderBottomLeftRadius: '30',
-        borderBottomRightRadius: '30'
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25
     },
     container: {
         backgroundColor: 'white',

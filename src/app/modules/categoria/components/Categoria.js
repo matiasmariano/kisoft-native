@@ -41,7 +41,7 @@ const Categoria = ({ navigation, route }) => {
                     </Text>
                 </View>
 
-                {index < (catalogo.length - 1 ) ? <View style={styles.lineCategorias} /> : null}
+                {index < (catalogo.length - 1 ) ? <View style={styles.lineCategorias} /> : <View style={styles.marginEnd} />}
             </View>
         )
     })
@@ -55,11 +55,11 @@ const Categoria = ({ navigation, route }) => {
                 <View style={styles.line} />
                 <Text>Elegí la experiencia que más te guste</Text>
             </View>
-            <View style={styles.container}>
-                <ScrollView>
-                    {catalogoList}
-                </ScrollView>
-            </View>
+            <ScrollView>
+                <View style={styles.container}>
+                        {catalogoList}
+                </View>
+            </ScrollView>
         </View>
     );
 };
@@ -69,7 +69,7 @@ export default Categoria;
 const styles = {
     pointsContainer: {
         width: '80%',
-        height: '13%',
+        height: '15%',
         backgroundColor: 'white',
         marginLeft: '10%',
         marginTop: '-12%',
@@ -85,13 +85,11 @@ const styles = {
         height: '6%',
         backgroundColor: 'rgb(227, 0, 27)',
         borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25
+        borderBottomRightRadius: 25,
     },
     container: {
         backgroundColor: 'white',
-        height: '100%',
         marginTop: '2%',
-        overflow: 'scroll',
     },
     imagen: {
         width: '90%',
@@ -135,6 +133,8 @@ const styles = {
     },
     body:{
         backgroundColor: '#ffffff',
+        flex: 1,
+        height: 200
     },
     lineCategorias: {
         backgroundColor: 'black',
@@ -144,5 +144,8 @@ const styles = {
         marginBottom: 10,
         marginLeft: 'auto',
         marginRight: 'auto',
+    },
+    marginEnd: {
+        marginBottom: 50
     }
 };

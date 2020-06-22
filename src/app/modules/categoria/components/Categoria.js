@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView  } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -8,19 +8,23 @@ const Categoria = ({ navigation, route }) => {
     //TODO, Enviar solo el Id de la categoria por parametro y obtener aca el catalogo
     const { catalogo } = route.params;
 
-    const catalogoList = catalogo.map(oferta => {
+    const catalogoList = catalogo.map((oferta, index) => {
         return (
             <View style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`}>
                 <Image source={{ uri: oferta.imagen }} style={styles.imagen} />
-                <Text style={styles.titulo}>{oferta.titulo}</Text>
-                <Rating
-                    type='heart'
-                    count={5}
-                    imageSize={20}
-                    readonly={true}
-                    startingValue={oferta.puntuacion}
-                    style={{ paddingLeft: 0, alignItems: 'flex-start', marginLeft: '5%', marginTop: 5 }}
-                />
+
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text style={styles.titulo}>{oferta.titulo}</Text>
+                    <Rating
+                        type='heart'
+                        count={5}
+                        imageSize={20}
+                        readonly={true}
+                        startingValue={oferta.puntuacion}
+                        style={{marginTop: 16, marginRight: '5%'}}
+                    />
+                </View>
+
                 <Text style={styles.descripcion} numberOfLines={3}>{oferta.descripcion}</Text>
 
                 <View>
@@ -36,6 +40,8 @@ const Categoria = ({ navigation, route }) => {
                         <Text>{` Para ${oferta.cantidad_personas} personas`}</Text>
                     </Text>
                 </View>
+
+                {index < (catalogo.length - 1 ) ? <View style={styles.lineCategorias} /> : null}
             </View>
         )
     })
@@ -50,7 +56,9 @@ const Categoria = ({ navigation, route }) => {
                 <Text>Elegí la experiencia que más te guste</Text>
             </View>
             <View style={styles.container}>
-                {catalogoList}
+                <ScrollView>
+                    {catalogoList}
+                </ScrollView>
             </View>
         </View>
     );
@@ -82,7 +90,8 @@ const styles = {
     container: {
         backgroundColor: 'white',
         height: '100%',
-        marginTop: '2%'
+        marginTop: '2%',
+        overflow: 'scroll',
     },
     imagen: {
         width: '90%',
@@ -110,7 +119,7 @@ const styles = {
         fontWeight: 'normal'
     },
     rating: {
-        marginLeft: '5%'
+        marginLeft: '5%',
     },
     line: {
         backgroundColor: 'black',
@@ -119,10 +128,21 @@ const styles = {
         margin: 5
     },
     screenTextStyle: {
-        marginLeft: 20,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '90%',
         marginTop: 6
     },
     body:{
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+    },
+    lineCategorias: {
+        backgroundColor: 'black',
+        height: 1,
+        width: '75%',
+        marginTop: 20,
+        marginBottom: 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
     }
 };

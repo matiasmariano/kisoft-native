@@ -1,19 +1,28 @@
-import React, { Component } from 'react';
-import { View, Text, Image, ScrollView  } from 'react-native';
+import React, { Component, useEffect, useState } from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { get } from '../services/CategoriaService';
 
 const Categoria = ({ navigation, route }) => {
 
-    //TODO, Enviar solo el Id de la categoria por parametro y obtener aca el catalogo
-    const { catalogo } = route.params;
+    const [catalogo, setCatalogo] = useState([])
+
+    useEffect(() => {
+        const call = async () => {
+            let c = await get(route.params.categoriaId)
+            if (c.data)
+                setCatalogo(c.data);
+        }
+        call()
+    }, [])
 
     const catalogoList = catalogo.map((oferta, index) => {
         return (
             <View style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`}>
                 <Image source={{ uri: oferta.imagen }} style={styles.imagen} />
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={styles.titulo}>{oferta.titulo}</Text>
                     <Rating
                         type='heart'
@@ -21,7 +30,7 @@ const Categoria = ({ navigation, route }) => {
                         imageSize={20}
                         readonly={true}
                         startingValue={oferta.puntuacion}
-                        style={{marginTop: 16, marginRight: '5%'}}
+                        style={{ marginTop: 16, marginRight: '5%' }}
                     />
                 </View>
 
@@ -29,19 +38,19 @@ const Categoria = ({ navigation, route }) => {
 
                 <View>
                     <Text style={[styles.screenTextStyle]}>
-                        <Icon name="ios-pin" size={15} color="#E42028"/>   
+                        <Icon name="ios-pin" size={15} color="#E42028" />
                         <Text>{` ${oferta.ubicacion}`}</Text>
                     </Text>
                 </View>
 
                 <View>
                     <Text style={[styles.screenTextStyle]}>
-                        <Icon name="ios-person" size={15} color="#E42028"/>   
+                        <Icon name="ios-person" size={15} color="#E42028" />
                         <Text>{` Para ${oferta.cantidad_personas} personas`}</Text>
                     </Text>
                 </View>
 
-                {index < (catalogo.length - 1 ) ? <View style={styles.lineCategorias} /> : <View style={styles.marginEnd} />}
+                {index < (catalogo.length - 1) ? <View style={styles.lineCategorias} /> : <View style={styles.marginEnd} />}
             </View>
         )
     })
@@ -57,7 +66,7 @@ const Categoria = ({ navigation, route }) => {
             </View>
             <ScrollView>
                 <View style={styles.container}>
-                        {catalogoList}
+                    {catalogoList}
                 </View>
             </ScrollView>
         </View>
@@ -131,7 +140,7 @@ const styles = {
         width: '90%',
         marginTop: 6
     },
-    body:{
+    body: {
         backgroundColor: '#ffffff',
         flex: 1,
         height: 200

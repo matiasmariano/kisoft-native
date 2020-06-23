@@ -1,7 +1,9 @@
 import Axios from 'axios';
 
-export default class Account {
-    static async login(data) {
-        return Axios.get('/entities/test');
+export const login = async () => {
+    return {
+        data: {
+            token: '1231rjno1h41uob3bgv14gv1ug4uo124uo1v4uo14v1o4v1'
+        }
     }
 }

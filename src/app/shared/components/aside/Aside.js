@@ -23,7 +23,7 @@ function HomeScreens() {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route))} />
-      <Stack.Screen name="Gastronomia" component={Categoria} options={({ route, navigation }) => (options(navigation, route))} />
+      <Stack.Screen name="Categoria" component={Categoria} options={({ route, navigation }) => (options(navigation, route))} />
     </Stack.Navigator>
   );
 }
@@ -50,7 +50,7 @@ export default Aside;
 
 function options(navigation, route) {
   return ({
-    headerTitle: getNameByRoute(route.name),
+    headerTitle: route.params ? route.params.title : '',
     headerStyle: { backgroundColor: 'rgb(227, 0, 27)', color: 'red', shadowColor: 'transparent', aligneSelf: 'center' },
     headerTitleStyle: {
       color: '#ffffff',
@@ -65,7 +65,7 @@ function options(navigation, route) {
         style={{
           marginRight: 20
         }}
-        onPress={() => {}}
+        onPress={() => { }}
       />
     ),
     headerLeft: () =>
@@ -94,17 +94,6 @@ function options(navigation, route) {
           />
         )
   })
-}
-
-const getNameByRoute = (route) => {
-  switch (route) {
-    case 'Gastronomia':
-      return 'Gastronomía'
-      break;
-    default:
-      return '';
-      break;
-  }
 }
 
 const styles = {

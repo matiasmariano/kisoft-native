@@ -9,10 +9,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import ButtonK from '../inputs/ButtonK';
 
-import Home from "../../../modules/home/components/Home";
+import Home from "../../../modules/experiencias/home/components/Home";
+import Categoria from "../../../modules/experiencias/categoria/components/Categoria";
 import Login from "../../../modules/authentication/components/Login/Login";
 import Cobro from "../../../modules/cobro/components/Cobro";
-import Categoria from "../../../modules/categoria/components/Categoria";
 
 import CustomDrawer from './CustomDrawer';
 

@@ -29,10 +29,19 @@ class CustomDrawer extends Component {
                     }}>Home</Text>
                 </View>
                 <View style={[styles.screenStyle, this.state.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
-                    <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]} onPress={() => {
-                        this.setState({activeItemKey: 'Cobro'});
-                        navigation.navigate('Cobro');
-                    }}>Cobro</Text>
+                    <Text 
+                        style={[styles.screenTextStyle, this.state.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]}
+                        onPress={() => { this.setState({activeItemKey: 'Cobro'}); navigation.navigate('Cobro');}}
+                        >
+                        Cobro
+                    </Text>
+                </View>
+                <View style={[styles.screenStyle, this.state.activeItemKey =='ListadoFlex' ? styles.activeBackgroundColor : null]}>
+                    <Text 
+                        style={[ styles.screenTextStyle, this.state.activeItemKey == 'ListadoFlex'? styles.selectedTextStyle: null ]}
+                        onPress={() => { this.setState({activeItemKey: 'ListadoFlex'}); navigation.navigate('ListadoFlex');}}>
+                        Listado flex
+                    </Text>
                 </View>
                 <Divider style={styles.bottomDivider} />
                 <View style={styles.cerrarSesion}>

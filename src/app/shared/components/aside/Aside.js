@@ -7,12 +7,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconAwasome from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+import { navigationRef } from '../RootNavigation'
+
 import ButtonK from '../inputs/ButtonK';
 
 import Home from "../../../modules/home/components/Home";
 import Login from "../../../modules/authentication/components/Login/Login";
 import Cobro from "../../../modules/cobro/components/Cobro";
 import Categoria from "../../../modules/categoria/components/Categoria";
+import ListadoFlex from '../../../modules/ListadoFlex/components/ListadoFlex';
+import DetalleNovedad from '../../../modules/ListadoFlex/components/DetalleNovedad'
 
 import CustomDrawer from './CustomDrawer';
 
@@ -36,10 +40,20 @@ function CobroScreens() {
   );
 }
 
+function ListadoFlexScreens() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="ListadoFlex" component={ListadoFlex} options={({ route, navigation }) => (options(navigation, route))} />
+      <Stack.Screen name="DetalleNovedad" component={DetalleNovedad} options={({ route, navigation }) => (options(navigation, route))} />
+    </Stack.Navigator>
+  );
+}
+
 const Aside = ({ logout }) => (
-  <NavigationContainer theme={styles.theme}>
+  <NavigationContainer theme={styles.theme} ref={navigationRef}>
     <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout} />}>
       <Drawer.Screen name="Home" component={HomeScreens} />
+      <Drawer.Screen name="ListadoFlex" component={ListadoFlexScreens} />
       <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
       <Drawer.Screen name="Cobro" component={CobroScreens} />
     </Drawer.Navigator>
@@ -58,27 +72,27 @@ function options(navigation, route) {
       fontWeight: '400'
     },
     headerRight: () => (
-      <IconAwasome
-        name="filter"
-        size={25}
-        color="#ffffff"
-        style={{
-          marginRight: 20
-        }}
-        onPress={() => {}}
-      />
+       <IconAwasome
+         name="filter"
+         size={25}
+         color="#ffffff"
+         style={{
+           marginRight: 20
+         }}
+         onPress={() => {}}
+       />
     ),
     headerLeft: () =>
       route.name == 'Home' ?
         (
-          <Icon
-            name="ios-menu"
-            size={40}
-            color="#ffffff"
-            style={{
-              marginLeft: 20
-            }}
-            onPress={() => navigation.openDrawer()}
+           <Icon
+             name="ios-menu"
+             size={40}
+             color="#ffffff"
+             style={{
+               marginLeft: 20
+             }}
+             onPress={() => navigation.openDrawer()}
           />
         )
         :

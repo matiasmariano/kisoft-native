@@ -1,46 +1,35 @@
-import React from "react";
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { get } from '../services/HomeServices';
 
 const Home = ({ navigation }) => {
 
+    const [categorias, setCategorias] = useState([])
 
-    //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    let categorias = [{
-        titulo: 'Gastronomia',
-        img: 'https://laverdadonline.com/wp-content/uploads/2019/10/xgastronomia-almeria-plato-jpgqitokp_pz-qe_-pagespeed-ic-mwgxz8yzo4.jpg',
-        catalogo: [{
-            imagen: 'https://gastronomiaycia.republica.com/wp-content/uploads/2017/10/mastergastronomiaesah2017-680x453.jpg',
-            titulo: 'El balon',
-            puntuacion: 3,
-            descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
-            costo: 40000,
-            ubicacion: 'Quilmes papi',
-            cantidad_personas: 2
-        },{
-            imagen: 'https://www.mexicodesconocido.com.mx/assets/images/destinos/teotihuacan/actividades/72_Teotihuacan_Escamoles4.jpg',
-            titulo: 'El balonaso',
-            puntuacion: 4,
-            descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
-            costo: 35000,
-            ubicacion: 'A la vuelta de la ezquina',
-            cantidad_personas: 2
-        }]
-    }]
-    //BORRAR MOCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    useEffect(() => {
+        const call = async () => {
+            let c = await get()
+            if (c.data)
+                setCategorias(c.data);
+        }
+        call()
+    }, [])
 
     let categoriasList = []
-    for (let i = 0; i < categorias.length; i += 1) {
+    categorias.forEach(categoria => {
         categoriasList.push(
             <>
-                {categorias[i] && 
-                <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${i}`} onPress={() => navigation.navigate(`${categorias[i].titulo}`, {catalogo: categorias[i].catalogo })}>
-                    <Image source={{ uri: categorias[i].img }} style={styles.imagen} />
-                </TouchableHighlight>}
+                {
+                    categoria &&
+                    <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${categoria.title}`} onPress={() => navigation.navigate('Categoria', { title: categoria.titulo, categoriaId: categoria.id })}>
+                        <Image source={{ uri: categoria.img }} style={styles.imagen} />
+                    </TouchableHighlight>
+                }
+                <Text style={styles.categoriaText}>{categoria.titulo}</Text>
             </>
         )
-
-    }
+    });
 
     return (
         <View style={styles.container}>
@@ -98,14 +87,23 @@ const styles = {
         marginLeft: 28,
         width: wp('85%'),
         marginTop: hp('1%'),
-        height: hp('14%')
+        height: hp('14%'),
     },
     categoriasView: {
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     imagen: {
         width: '100%',
         height: '100%',
         borderRadius: 13,
+    },
+    categoriaText: {
+        color: '#ffffff',
+        fontSize: 35,
+        marginTop: '-10%',
+        marginBottom: '5%',
+        textAlign: 'right',
+        marginRight: 40,
+        fontWeight: '400'
     }
 }

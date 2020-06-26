@@ -11,12 +11,11 @@ import { navigationRef } from '../RootNavigation'
 
 import ButtonK from '../inputs/ButtonK';
 
-import Home from "../../../modules/home/components/Home";
+import Home from "../../../modules/experiencias/home/components/Home";
+import Categoria from "../../../modules/experiencias/categoria/components/Categoria";
 import Login from "../../../modules/authentication/components/Login/Login";
 import Cobro from "../../../modules/cobro/components/Cobro";
 import Categoria from "../../../modules/categoria/components/Categoria";
-import ListadoFlex from '../../../modules/ListadoFlex/components/ListadoFlex';
-import DetalleNovedad from '../../../modules/ListadoFlex/components/DetalleNovedad'
 
 import CustomDrawer from './CustomDrawer';
 

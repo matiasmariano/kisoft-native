@@ -28,14 +28,6 @@ class CustomDrawer extends Component {
                         navigation.navigate('Home');
                     }}>Home</Text>
                 </View>
-                <View style={[styles.screenStyle, this.state.activeItemKey =='Cobro' ? styles.activeBackgroundColor : null]}>
-                    <Text 
-                        style={[styles.screenTextStyle, this.state.activeItemKey =='Cobro' ? styles.selectedTextStyle : null]}
-                        onPress={() => { this.setState({activeItemKey: 'Cobro'}); navigation.navigate('Cobro');}}
-                        >
-                        Cobro
-                    </Text>
-                </View>
                 <View style={[styles.screenStyle, this.state.activeItemKey =='MultiFlex' ? styles.activeBackgroundColor : null]}>
                     <Text 
                         style={[ styles.screenTextStyle, this.state.activeItemKey == 'MultiFlex'? styles.selectedTextStyle: null ]}

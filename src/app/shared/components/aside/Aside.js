@@ -13,7 +13,6 @@ import ButtonK from '../inputs/ButtonK';
 import Home from "../../../modules/experiencias/categorias/components/Home";
 import Categoria from "../../../modules/experiencias/categoria/components/Categoria";
 import DetalleExperiencias from "../../../modules/experiencias/experiencias/components/DetalleExperiencias";
-import Cobro from "../../../modules/cobro/components/Cobro";
 import ListadoFlex from "../../../modules/multiflex/categorias/components/ListadoFlex"
 import DetalleNovedad from "../../../modules/multiflex/detalle/Components/DetalleNovedad"
 import CustomDrawer from './CustomDrawer';
@@ -27,14 +26,6 @@ function HomeScreens() {
       <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="Categoria" component={Categoria} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="DetalleExperiencias" component={DetalleExperiencias} options={({ route, navigation }) => (options(navigation, route))} />
-    </Stack.Navigator>
-  );
-}
-
-function CobroScreens() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Cobro" component={Cobro} options={({ route, navigation }) => (options(navigation, route))} />
     </Stack.Navigator>
   );
 }
@@ -54,7 +45,6 @@ const Aside = ({ logout }) => (
       <Drawer.Screen name="Home" component={HomeScreens} />
       <Drawer.Screen name="MultiFlex" component={PuntosFlexScreens} />
       <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
-      <Drawer.Screen name="Cobro" component={CobroScreens} />
     </Drawer.Navigator>
   </NavigationContainer>
 )

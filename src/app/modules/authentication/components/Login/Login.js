@@ -4,7 +4,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { useNotifications } from '../../../../shared/hooks/notifications'
 
 import ButtonK from '../../../../shared/components/inputs/ButtonK';
-import InputText from '../../../..//shared/components/inputs/InputText';
+import InputText from '../../../../shared/components/inputs/InputText';
 import ImageK from '../../../../shared/components/outputs/ImageK';
 
 import styles from '../../../../../assets/stylesheets/login.scss';

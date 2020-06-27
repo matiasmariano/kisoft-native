@@ -36,11 +36,11 @@ class CustomDrawer extends Component {
                         Cobro
                     </Text>
                 </View>
-                <View style={[styles.screenStyle, this.state.activeItemKey =='ListadoFlex' ? styles.activeBackgroundColor : null]}>
+                <View style={[styles.screenStyle, this.state.activeItemKey =='MultiFlex' ? styles.activeBackgroundColor : null]}>
                     <Text 
-                        style={[ styles.screenTextStyle, this.state.activeItemKey == 'ListadoFlex'? styles.selectedTextStyle: null ]}
-                        onPress={() => { this.setState({activeItemKey: 'ListadoFlex'}); navigation.navigate('ListadoFlex');}}>
-                        Listado flex
+                        style={[ styles.screenTextStyle, this.state.activeItemKey == 'MultiFlex'? styles.selectedTextStyle: null ]}
+                        onPress={() => { this.setState({activeItemKey: 'MultiFlex'}); navigation.navigate('MultiFlex');}}>
+                        MultiFlex
                     </Text>
                 </View>
                 <Divider style={styles.bottomDivider} />

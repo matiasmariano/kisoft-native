@@ -23,14 +23,14 @@ export default header;
 const styles = {
     extenderHead: {
         width: '100%',
-        height: '8%',
+        height: '10%',
         backgroundColor: 'rgb(227, 0, 27)',
         borderBottomLeftRadius: 25,
         borderBottomRightRadius: 25,
     },
     pointsContainer: {
         width: '80%',
-        height: '13%',
+        height: '15%',
         backgroundColor: 'white',
         marginLeft: '10%',
         marginBottom: 10,
@@ -39,7 +39,7 @@ const styles = {
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.5,
         alignItems: 'center',
-        padding: 20,
+        // padding: 20,
         borderRadius: 15,
         elevation: 4,
     },

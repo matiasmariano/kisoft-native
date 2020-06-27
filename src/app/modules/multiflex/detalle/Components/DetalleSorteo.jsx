@@ -2,13 +2,13 @@ import React from 'react'
 import { Text, View } from 'react-native'
 
 
-const DetalleNovedad = (props) => {
+const DetalleSorteo = (props) => {
 
     const { Nombre } = props.route.params;
 
     return(
         <View style={{ backgroundColor: 'white', flex: 1 }}>
-            <Text>DetalleNovedad</Text>
+            <Text>DetalleSorteo</Text>
             <Text>
                 { Nombre }
             </Text>
@@ -16,4 +16,4 @@ const DetalleNovedad = (props) => {
     )
 }
 
-export default DetalleNovedad;
+export default DetalleSorteo;

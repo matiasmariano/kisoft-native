@@ -16,8 +16,8 @@ import Categoria from "../../../modules/experiencias/categoria/components/Catego
 import DetalleExperiencias from "../../../modules/experiencias/experiencia/components/DetalleExperiencias";
 
 //Multiflex...
-import ListadoFlex from "../../../modules/multiflex/categorias/components/ListadoFlex"
-import DetalleNovedad from "../../../modules/multiflex/detalle/Components/DetalleNovedad"
+import Multiflex from "../../../modules/multiflex/categorias/components/Multiflex"
+import DetalleSorteo from "../../../modules/multiflex/detalle/Components/DetalleSorteo"
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -35,8 +35,8 @@ function HomeScreens() {
 function PuntosFlexScreens() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Multiflex" component={ListadoFlex} options={({ route, navigation }) => (options(navigation, route))} />
-      <Stack.Screen name="DetalleNovedad" component={DetalleNovedad} options={({ route, navigation }) => (options(navigation, route))} />
+      <Stack.Screen name="Multiflex" component={Multiflex} options={({ route, navigation }) => (options(navigation, route))} />
+      <Stack.Screen name="DetalleSorteo" component={DetalleSorteo} options={({ route, navigation }) => (options(navigation, route))} />
     </Stack.Navigator>
   );
 }

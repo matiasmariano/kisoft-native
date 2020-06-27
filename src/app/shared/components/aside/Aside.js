@@ -5,17 +5,19 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconAwasome from 'react-native-vector-icons/FontAwesome5';
-
+import ButtonK from '../inputs/ButtonK';
+import CustomDrawer from './CustomDrawer';
 import { navigationRef } from '../RootNavigation'
 
-import ButtonK from '../inputs/ButtonK';
 
+//Experiencias...
 import Home from "../../../modules/experiencias/categorias/components/Home";
 import Categoria from "../../../modules/experiencias/categoria/components/Categoria";
-import DetalleExperiencias from "../../../modules/experiencias/experiencias/components/DetalleExperiencias";
+import DetalleExperiencias from "../../../modules/experiencias/experiencia/components/DetalleExperiencias";
+
+//Multiflex...
 import ListadoFlex from "../../../modules/multiflex/categorias/components/ListadoFlex"
 import DetalleNovedad from "../../../modules/multiflex/detalle/Components/DetalleNovedad"
-import CustomDrawer from './CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();

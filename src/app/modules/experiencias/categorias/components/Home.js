@@ -100,10 +100,11 @@ const styles = {
     categoriaText: {
         color: '#ffffff',
         fontSize: 35,
-        marginTop: '-10%',
-        marginBottom: '5%',
-        textAlign: 'right',
+        marginTop: '-20%',
+        marginLeft: '10%',
+        marginBottom: '15%',
+        textAlign: 'center',
         marginRight: 40,
-        fontWeight: '400'
+        fontWeight: '700'
     }
 }

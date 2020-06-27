@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const DetalleExperiencias = ({ navigation, route }) => {
+const Experiencia = ({ navigation, route }) => {
 
     useEffect(() => {
         // ejecutar el llamado a la api para obtener el detalle.
@@ -17,4 +17,4 @@ const DetalleExperiencias = ({ navigation, route }) => {
     );
 };
 
-export default DetalleExperiencias;
+export default Experiencia;

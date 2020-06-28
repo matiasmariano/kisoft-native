@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         width: 160,
         // backgroundColor: 'red',
         marginHorizontal: 5,
-        
+
         borderRadius: 5,
         padding: 0,
         backgroundColor: 'white',
@@ -79,12 +79,12 @@ const styles = StyleSheet.create({
     buttonHeaderActive: {
         backgroundColor: 'rgb(227, 0, 27)'
     },
-    textHeader:{
+    textHeader: {
         color: '#181818',
         fontSize: 15,
         fontWeight: 'bold'
     },
-    textHeaderActive:{
+    textHeaderActive: {
         color: 'white',
         fontSize: 15,
         fontWeight: 'bold'

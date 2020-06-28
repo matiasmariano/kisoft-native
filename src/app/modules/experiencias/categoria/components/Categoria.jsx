@@ -4,6 +4,7 @@ import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../../../shared/components/header/header';
 import { get } from '../services/CategoriaService';
+import TagPuntos from '../../../../shared/components/tagPuntos/TagPuntos'
 
 const Categoria = ({ navigation, route }) => {
 
@@ -21,8 +22,10 @@ const Categoria = ({ navigation, route }) => {
     const catalogoList = catalogo.map((oferta, index) => {
         return (
             <View style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`}>
-                <Image source={{ uri: oferta.imagen }} style={styles.imagen} />
-
+                <>
+                    <Image source={{ uri: oferta.imagen }} style={styles.imagen} />
+                    <TagPuntos points={oferta.costo} />
+                </>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={styles.titulo}>{oferta.titulo}</Text>
                     <Rating

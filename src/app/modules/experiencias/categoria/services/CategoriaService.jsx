@@ -9,7 +9,8 @@ export const get = async (categoriaId) => {
             descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
             costo: 40000,
             ubicacion: 'Quilmes papi',
-            cantidad_personas: 2
+            cantidad_personas: 2,
+            cost: 10000
         }, {
             imagen: 'https://www.mexicodesconocido.com.mx/assets/images/destinos/teotihuacan/actividades/72_Teotihuacan_Escamoles4.jpg',
             titulo: 'El balonaso',
@@ -17,7 +18,8 @@ export const get = async (categoriaId) => {
             descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
             costo: 35000,
             ubicacion: 'A la vuelta de la ezquina',
-            cantidad_personas: 2
+            cantidad_personas: 2,
+            cost: 20000
         },
         {
             imagen: 'https://gastronomiaycia.republica.com/wp-content/uploads/2017/10/mastergastronomiaesah2017-680x453.jpg',
@@ -26,7 +28,8 @@ export const get = async (categoriaId) => {
             descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
             costo: 40000,
             ubicacion: 'Quilmes papi',
-            cantidad_personas: 2
+            cantidad_personas: 2,
+            cost: 25000
         }, {
             imagen: 'https://www.mexicodesconocido.com.mx/assets/images/destinos/teotihuacan/actividades/72_Teotihuacan_Escamoles4.jpg',
             titulo: 'El balonaso',
@@ -34,7 +37,8 @@ export const get = async (categoriaId) => {
             descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
             costo: 35000,
             ubicacion: 'A la vuelta de la ezquina',
-            cantidad_personas: 2
+            cantidad_personas: 2,
+            cost: 10000
         }]
     }
 }

@@ -18,41 +18,41 @@ const DetalleSorteo = (props) => {
     useEffect(() => {
         getSorteoById(IdSorteo).then((data) => {
             setTimeout(() => {
-                setStore({...store, dataSorteo: data, spinner: false})
+                setStore({ ...store, dataSorteo: data, spinner: false })
             }, 1000)
         }).catch((ex) => {
-            setStore({...store, spinner: false})
+            setStore({ ...store, spinner: false })
         });
-    },[])
+    }, [])
 
     const clickSucribir = (id) => {
-        setStore({ ...store, spinner: true, textSpinner: ''})
-        suscribir(id).then((data) =>{
+        setStore({ ...store, spinner: true, textSpinner: '' })
+        suscribir(id).then((data) => {
             setTimeout(() => {
-                setStore({...store, spinner: false, modalSuscripcion: true});
+                setStore({ ...store, spinner: false, modalSuscripcion: true });
             }, 1000)
-        }).catch((ex) =>{
+        }).catch((ex) => {
             setTimeout(() => {
-                setStore({...store, spinner: false});
+                setStore({ ...store, spinner: false });
             }, 1000)
         })
     }
 
 
-    return(
+    return (
         <View style={styles.container}>
             <Spinner visible={store.spinner} textContent={store.textSpinner} />
-            <Notificacion 
-                message={'Estas suscrito papa!'} 
-                visible={store.modalSuscripcion} 
-                onClosed={() => setStore({...store, modalSuscripcion: false})} 
+            <Notificacion
+                message={'Estas suscrito papa!'}
+                visible={store.modalSuscripcion}
+                onClosed={() => setStore({ ...store, modalSuscripcion: false })}
                 type={'info'}
             />
-            
-            <Header points={store.dataSorteo.costo} />
+
+            <Header points={store.dataSorteo.costo} descuenta={true} title={}/>
             <ScrollView>
                 <View style={styles.body}>
-                    <Image style={styles.bodyImagen} source={{uri: store.dataSorteo.imagen }} />
+                    <Image style={styles.bodyImagen} source={{ uri: store.dataSorteo.imagen }} />
                     <Text style={styles.textParrafo, { fontWeight: '700' }}>Disfruta de una experiencia única con Punto Flex.</Text>
 
                     <View style={styles.containerInformacion}>
@@ -61,7 +61,7 @@ const DetalleSorteo = (props) => {
                     </View>
                     <View style={styles.containerInformacion, styles.containerUbicacion}>
                         <Image style={styles.imagenPin} source={require('../../../../../assets/imagenes/pin.png')} />
-                        <Text style={styles.textParrafo, { marginLeft: 10 } }>{store.dataSorteo.ubicacion}</Text>
+                        <Text style={styles.textParrafo, { marginLeft: 10 }}>{store.dataSorteo.ubicacion}</Text>
                     </View>
                     <View style={styles.containerInformacion}>
                         <Text style={styles.textParrafo, styles.textRed}>Información del sorteo</Text>
@@ -79,39 +79,39 @@ const DetalleSorteo = (props) => {
 export default DetalleSorteo;
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         backgroundColor: 'white',
     },
-    body:{
+    body: {
         marginHorizontal: 40
     },
-    bodyImagen:{
+    bodyImagen: {
         height: 200,
         marginVertical: 10,
         borderRadius: 20,
         resizeMode: 'stretch',
     },
-    containerInformacion:{
+    containerInformacion: {
         marginVertical: 10
     },
-    textRed:{
+    textRed: {
         color: 'red'
     },
-    textParrafo:{
+    textParrafo: {
         color: '#3A3A3A',
         fontSize: 13
     },
-    styleButton:{
-        backgroundColor: 'rgb(227, 0, 27)', 
+    styleButton: {
+        backgroundColor: 'rgb(227, 0, 27)',
         borderRadius: 8
     },
-    imagenPin:{
+    imagenPin: {
         height: 16,
         width: 16
     },
-    containerUbicacion:{
-        flexDirection: 'row', 
+    containerUbicacion: {
+        flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 5
     },

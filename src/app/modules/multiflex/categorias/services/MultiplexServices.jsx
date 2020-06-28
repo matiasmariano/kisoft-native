@@ -28,7 +28,7 @@ const data = [
         puntuacion: 3,
         descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
         costo: 40000,
-        ubicacion: 'Quilmes papi',
+        ubicacion: 'Quilmes',
         cantidad_personas: 2,
         detallePremio: '1 (un) PAR de entradas para Rata Blanca ubicación Pullman Lateral, el 30 de Noviembre a las 21:00hs.'
     }, 
@@ -39,7 +39,7 @@ const data = [
         puntuacion: 4,
         descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
         costo: 35000,
-        ubicacion: 'A la vuelta de la ezquina',
+        ubicacion: 'Belgrano',
         cantidad_personas: 2,
         detallePremio: '1 (un) PAR de entradas para Rata Blanca ubicación Pullman Lateral, el 30 de Noviembre a las 21:00hs.'
     },
@@ -50,7 +50,7 @@ const data = [
         puntuacion: 3,
         descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
         costo: 40000,
-        ubicacion: 'Quilmes papi',
+        ubicacion: 'Quilmes',
         cantidad_personas: 2,
         detallePremio: '1 (un) PAR de entradas para Rata Blanca ubicación Pullman Lateral, el 30 de Noviembre a las 21:00hs.'
     }, 
@@ -61,7 +61,7 @@ const data = [
         puntuacion: 4,
         descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
         costo: 35000,
-        ubicacion: 'A la vuelta de la ezquina',
+        ubicacion: 'Belgrano',
         cantidad_personas: 2,
         detallePremio: '1 (un) PAR de entradas para Rata Blanca ubicación Pullman Lateral, el 30 de Noviembre a las 21:00hs.'
     }

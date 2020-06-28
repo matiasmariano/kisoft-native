@@ -8,7 +8,7 @@ export const get = async (categoriaId) => {
             puntuacion: 3,
             descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
             costo: 40000,
-            ubicacion: 'Quilmes papi',
+            ubicacion: 'Quilmes',
             cantidad_personas: 2,
             cost: 10000
         }, {
@@ -17,7 +17,7 @@ export const get = async (categoriaId) => {
             puntuacion: 4,
             descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
             costo: 35000,
-            ubicacion: 'A la vuelta de la ezquina',
+            ubicacion: 'Belgrano',
             cantidad_personas: 2,
             cost: 20000
         },
@@ -27,7 +27,7 @@ export const get = async (categoriaId) => {
             puntuacion: 3,
             descripcion: 'lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja lorem ipsum tu vieja',
             costo: 40000,
-            ubicacion: 'Quilmes papi',
+            ubicacion: 'Palermo',
             cantidad_personas: 2,
             cost: 25000
         }, {
@@ -36,7 +36,7 @@ export const get = async (categoriaId) => {
             puntuacion: 4,
             descripcion: 'eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa  eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa eaaaa',
             costo: 35000,
-            ubicacion: 'A la vuelta de la ezquina',
+            ubicacion: 'Belgrano',
             cantidad_personas: 2,
             cost: 10000
         }]

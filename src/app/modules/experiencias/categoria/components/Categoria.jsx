@@ -19,11 +19,17 @@ const Categoria = ({ navigation, route }) => {
         call()
     }, [])
 
+    const irDetalleExperiencia = (titulo, id) => {
+        window.alert("as")
+
+        navigation.navigate('DetalleExperiencias', { title: titulo, categoriaId: id })
+    }
+
     const catalogoList = catalogo.map((oferta, index) => {
         return (
-            <View style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`}>
+            <View style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`} >
                 <>
-                    <Image source={{ uri: oferta.imagen }} style={styles.imagen} />
+                    <Image source={{ uri: oferta.imagen }} style={styles.imagen} onPress={() => irDetalleExperiencia('', oferta.id)} />
                     <TagPuntos points={oferta.costo} />
                 </>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

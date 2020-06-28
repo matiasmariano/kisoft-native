@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Text, FlatList, TouchableOpacity, StyleSheet, View, Image } from 'react-native'
-import { get } from '../services/MultiplexServices';
+import { getSorteos } from '../services/MultiplexServices';
 import Spinner from '../../../../shared/components/spinner/Spinner'
 import TagPuntos from '../../../../shared/components/tagPuntos/TagPuntos'
 
@@ -12,9 +12,9 @@ const Sorteos = ({ navigation }) => {
     })
 
     useEffect(() => {
-        get(2).then((c) => {
+        getSorteos().then((data) => {
             setTimeout(() =>
-                setStore({ ...store, spinner: false, listNovedades: c.data }),
+                setStore({ ...store, spinner: false, listNovedades: data }),
                 1000)
         })
     }, [])
@@ -34,7 +34,7 @@ const Sorteos = ({ navigation }) => {
 }
 
 const ItemSorteo = ({ navigation, data }) => (
-    <TouchableOpacity activeOpacity={0.7} style={styles.itemContainer} onPress={() => navigation.navigate('DetalleSorteo', { Nombre: data.Nombre })}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.itemContainer} onPress={() => navigation.navigate('DetalleSorteo', { IdSorteo: data.id })}>
         <Image style={styles.itemImagen} source={{ uri: data.imagen }} />
         <TagPuntos points={data.costo} />
         <Text style={styles.itemText}>{data.titulo}</Text>

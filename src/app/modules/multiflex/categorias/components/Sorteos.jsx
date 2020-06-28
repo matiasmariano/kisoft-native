@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Text, FlatList, TouchableOpacity, StyleSheet, View, Image } from 'react-native'
-import { get } from '../services/MultiplexServices';
+import { getSorteos } from '../services/MultiplexServices';
 import { decimalFormat } from '../../../../shared/helpers/FormaterHelper' 
 import Spinner from '../../../../shared/components/spinner/Spinner';
 
-const Sorteos = ({ navigation, data }) => {
+const Sorteos = ({ navigation }) => {
 
     const [store, setStore] = useState({
         spinner: true,
@@ -12,9 +12,9 @@ const Sorteos = ({ navigation, data }) => {
     })
 
     useEffect(()=>{
-        get(2).then((c) => {
+        getSorteos().then((data) => {
             setTimeout(() => 
-            setStore({...store, spinner: false, listNovedades: c.data }), 
+                setStore({...store, spinner: false, listNovedades: data }), 
             1000)
         })
     },[])
@@ -35,7 +35,7 @@ const Sorteos = ({ navigation, data }) => {
 
 
 const ItemSorteo = ({ navigation, data }) => (
-    <TouchableOpacity activeOpacity={0.7} style={styles.itemContainer} onPress={() => navigation.navigate('DetalleSorteo', { Nombre: data.Nombre })}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.itemContainer} onPress={() => navigation.navigate('DetalleSorteo', { IdSorteo: data.id })}>
         <Image style={styles.itemImagen} source={{ uri: data.imagen}} />
         <View style={styles.tagPuntos}>
             <Image source={require('../../../../../assets/imagenes/coins.png')} style={styles.tagPuntosImage} />

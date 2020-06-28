@@ -2,16 +2,18 @@ import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { decimalFormat } from '../../helpers/FormaterHelper';
 
-const header = ({ points }) => (
+const header = ({ points, title, descuenta = false }) => (
     <>
         <View style={styles.extenderHead}></View>
         {points
             ?
             <View style={styles.pointsContainer}>
-                <Text>Tus puntos</Text>
+                {
+                    descuenta ? <Text>Costo en puntos</Text> : <Text>Tus puntos</Text>
+                }
                 <Text style={{ fontSize: 25 }}>{decimalFormat(points)}</Text>
                 <View style={styles.line} />
-                <Text>Elegí­ la experiencia que más te guste</Text>
+                <Text>{title}</Text>
             </View>
             :
             null}

@@ -61,7 +61,7 @@ const Categoria = ({ navigation, route }) => {
 
     return (
         <View style={styles.body}>
-            <Header points="10000" />
+            <Header points={20000} title={'Elegí la experiencia que más te guste'} />
             <ScrollView>
                 <View style={styles.container}>
                     {catalogoList}

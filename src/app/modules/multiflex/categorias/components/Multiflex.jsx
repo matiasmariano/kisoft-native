@@ -14,7 +14,7 @@ const Multiflex = ({ navigation }) => {
     return (
         <View style={styles.container}>
 
-            <Header points={20000} />
+            <Header points={20000} title={'Participá en el sorteo que más te guste'}/>
 
             <View style={styles.header}>
                 <TouchableOpacity style={[styles.buttonHeader, pantallaActual == 'sorteos' ? styles.buttonHeaderActive : null]}

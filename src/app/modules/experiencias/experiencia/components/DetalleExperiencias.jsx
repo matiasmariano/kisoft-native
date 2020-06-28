@@ -1,20 +1,37 @@
 import React, { Component, useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import { Rating } from 'react-native-ratings';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { get } from '../services/experienciaServices';
 
 const Experiencia = ({ navigation, route }) => {
 
+    const [experiencia, setExperiencia] = useState(undefined)
+
     useEffect(() => {
-        // ejecutar el llamado a la api para obtener el detalle.
+        const call = async () => {
+            let e = await get(route.params.experienciaId)
+            if (e.data)
+                setExperiencia(e.data);
+        }
+        call()
     }, [])
 
-    const { catalogo } = route.params;
-
     return (
-        <>
-        </>
+        experiencia &&
+        <View style={styles.body}>
+            <Header points={20000} title={experiencia.name} descuenta={true} />
+            <ScrollView>
+
+            </ScrollView>
+        </View >
     );
 };
 
 export default Experiencia;
+
+const styles = {
+    body: {
+        backgroundColor: '#ffffff',
+        flex: 1,
+        height: 200
+    }
+};

@@ -4,7 +4,7 @@ import { get } from '../services/MultiplexServices';
 import Spinner from '../../../../shared/components/spinner/Spinner'
 import TagPuntos from '../../../../shared/components/tagPuntos/TagPuntos'
 
-const Sorteos = ({ navigation, data }) => {
+const Sorteos = ({ navigation }) => {
 
     const [store, setStore] = useState({
         spinner: true,

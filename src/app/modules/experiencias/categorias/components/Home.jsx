@@ -38,6 +38,7 @@ const Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ScrollView>
+
                 <Text style={styles.title}>Categorias</Text>
                 <Text style={styles.subtitle}>Encontrá las experiencias que más te interesan</Text>
 

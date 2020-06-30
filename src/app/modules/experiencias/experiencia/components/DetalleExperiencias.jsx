@@ -1,6 +1,7 @@
 import React, { Component, useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { get } from '../services/experienciaServices';
+import Carousel from '../../../../shared/components/Carrusel'
 
 const Experiencia = ({ navigation, route }) => {
 
@@ -20,7 +21,10 @@ const Experiencia = ({ navigation, route }) => {
         <View style={styles.body}>
             <Header points={20000} title={experiencia.name} descuenta={true} />
             <ScrollView>
-
+                <Carousel
+                    itemsPerInterval={1}
+                    items={asdasd}
+                />
             </ScrollView>
         </View >
     );

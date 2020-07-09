@@ -5,17 +5,49 @@ export const usePayment = () => {
     const [apiStatus, setApiStatus] = useState(undefined)
 
     const getApiStatus = async () => {
-        let accountResponse = await Payment.get_api_status();
+        let accountResponse = await Payment.getApiStatus();
         if (setApiStatus.okResponse)
             setApiStatus(accountResponse.response)
     }
 
-    const processPayment = async (params) => {
-        let result = await Payment.init_process_payment(params);
-        return result
+    const processPayment = async (nroTarjeta, mesVencimiento, anioVencimiento, codSeguridad, nombre, nroDoc, monto) => {
+        //Valida que el status este OK...
+        getApiStatus()
+        if (apiStatus) {
+            let params = {
+                "card_number": nroTarjeta,
+                "card_expiration_month": mesVencimiento,
+                "card_expiration_year": anioVencimiento,
+                "security_code": codSeguridad,
+                "card_holder_name": nombre,
+                "card_holder_identification": {
+                    "type": "dni",
+                    "number": nroDoc
+                }
+            };
+            let tokenResult = await Payment.getToken(params)
+
+            let payParams = {
+                "site_transaction_id": "[ID DE LA TRANSACCIÓN]",
+                "token": tokenResult.token,
+                "payment_method_id": 1,
+                "bin": nroTarjeta.substr(0, 6),
+                "amount": monto,
+                "currency": "ARS",
+                "installments": 1, //El id debe coincidir con el medio de pago de tarjeta ingresada.Se valida que sean los primeros 6 digitos de la tarjeta ingresada al generar el token.
+                "description": "",
+                "payment_type": "single",
+                "sub_payments": []
+            }
+            let tokenResult = await Payment.processPayment(payParams)
+
+            return result
+        } else {
+            window.alert('No se pudo procesar su pago, intente mas tarde.')
+        }
     }
 
-    return { apiStatus, getApiStatus, processPayment }
+    return { processPayment }
 }
 
 /*

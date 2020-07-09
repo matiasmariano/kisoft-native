@@ -18,7 +18,7 @@ const requestHandler = (request) => {
             request.headers['Cache-Control'] = 'no-cache';
         }else if (request.url.includes('decidir') && request.url.includes('payments')){
             request.headers['Content-Type'] = 'application/json';
-            request.headers['apikey'] = private_key;
+            request.headers['apikey'] = '92b71cf711ca41f78362a7134f87ff65';
             request.headers['Cache-Control'] = 'no-cache';
         }
     }

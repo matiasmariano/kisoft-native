@@ -1,19 +1,14 @@
 import { useState, useEffect } from "react";
-import Payment from '../services/Payment';
+import { getApiStatus, getToken, makePayment } from '../services/Payment';
 
 export const usePayment = () => {
-    const [apiStatus, setApiStatus] = useState(undefined)
-
-    const getApiStatus = async () => {
-        let accountResponse = await Payment.getApiStatus();
-        if (setApiStatus.okResponse)
-            setApiStatus(accountResponse.response)
-    }
+    const [statusPayment, setStatusPayment] = useState(undefined)
 
     const processPayment = async (nroTarjeta, mesVencimiento, anioVencimiento, codSeguridad, nombre, nroDoc, monto) => {
+        let apiStatusResponse = await getApiStatus();
+
         //Valida que el status este OK...
-        getApiStatus()
-        if (apiStatus) {
+        if (apiStatusResponse.okResponse) {
             let params = {
                 "card_number": nroTarjeta,
                 "card_expiration_month": mesVencimiento,
@@ -25,28 +20,44 @@ export const usePayment = () => {
                     "number": nroDoc
                 }
             };
-            let tokenResult = await Payment.getToken(params)
 
-            let payParams = {
-                "site_transaction_id": "[ID DE LA TRANSACCIÓN]",
-                "token": tokenResult.token,
-                "payment_method_id": 1,
-                "bin": nroTarjeta.substr(0, 6),
-                "amount": monto,
-                "currency": "ARS",
-                "installments": 1, //El id debe coincidir con el medio de pago de tarjeta ingresada.Se valida que sean los primeros 6 digitos de la tarjeta ingresada al generar el token.
-                "description": "",
-                "payment_type": "single",
-                "sub_payments": []
+            let tokenResponese = await getToken(params)
+
+            if (tokenResponese.response.status == 'active') {
+
+
+                let payParams = {
+                    "site_transaction_id": "[ID DE LA TRANSACCIÓN]",
+                    "token": tokenResponese.response.id,
+                    "payment_method_id": 1,
+                    "bin": nroTarjeta.substr(0, 6),
+                    "amount": monto,
+                    "currency": "ARS",
+                    "installments": 1, //El id debe coincidir con el medio de pago de tarjeta ingresada.Se valida que sean los primeros 6 digitos de la tarjeta ingresada al generar el token.
+                    "description": "Compra de puntos Flex",
+                    "payment_type": "single",
+                    "sub_payments": []
+                }
+                let paymentResponse = await makePayment(payParams)
+
+                if(paymentResponse.okResponse && paymentResponse.response.status === 'approved'){
+                    setStatusPayment(paymentResponse.response)
+                }else{
+                    failPrecess('No se pudo procesar su pago, intente mas tarde.')
+                }
             }
-            let tokenResult = await Payment.processPayment(payParams)
-
-            return result
+            else {
+                failPrecess('No se pudo procesar su pago, la tarjeta se encuentra inactiva.')
+            }
         } else {
-            window.alert('No se pudo procesar su pago, intente mas tarde.')
+            failPrecess('No se pudo procesar su pago, intente mas tarde.')
+        }
+
+        const failPrecess = (message) => {
+            window.alert(message)
+            setStatusPayment(undefined)
         }
     }
-
     return { processPayment }
 }
 
@@ -63,3 +74,5 @@ export const usePayment = () => {
         }
       };
 */
+
+//DOCUMENTACION: https://decidirv2.api-docs.io/1.0/transacciones-simples/solicitud-de-token-de-pago-1

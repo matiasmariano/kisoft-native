@@ -1,5 +1,8 @@
 import Axios from 'axios';
 
+const decidirKeyPublica = 'e9cdb99fff374b5f91da4480c8dca741'
+const decidirKeyPribada = '92b71cf711ca41f78362a7134f87ff65'
+
 Axios.interceptors.request.use(
     request => requestHandler(request)
 )
@@ -14,11 +17,11 @@ const requestHandler = (request) => {
     if (isHandlerEnabled(request)) {
         if (request.url.includes('decidir')) {
             request.headers['Content-Type'] = 'application/json';
-            request.headers['apikey'] = 'e9cdb99fff374b5f91da4480c8dca741';
+            request.headers['apikey'] = decidirKeyPublica
             request.headers['Cache-Control'] = 'no-cache';
-        }else if (request.url.includes('decidir') && request.url.includes('payments')){
+        } else if (request.url.includes('decidir') && request.url.includes('payments')) {
             request.headers['Content-Type'] = 'application/json';
-            request.headers['apikey'] = '92b71cf711ca41f78362a7134f87ff65';
+            request.headers['apikey'] = decidirKeyPribada
             request.headers['Cache-Control'] = 'no-cache';
         }
     }

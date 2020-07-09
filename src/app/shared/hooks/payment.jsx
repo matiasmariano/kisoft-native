@@ -6,7 +6,6 @@ export const usePayment = () => {
 
     const processPayment = async (nroTarjeta, mesVencimiento, anioVencimiento, codSeguridad, nombre, nroDoc, monto) => {
         let apiStatusResponse = await getApiStatus();
-
         //Valida que el status este OK...
         if (apiStatusResponse.okResponse) {
             let params = {
@@ -20,12 +19,10 @@ export const usePayment = () => {
                     "number": nroDoc
                 }
             };
-
+            //Obtiene el token...
             let tokenResponese = await getToken(params)
 
             if (tokenResponese.response.status == 'active') {
-
-
                 let payParams = {
                     "site_transaction_id": "[ID DE LA TRANSACCIÓN]",
                     "token": tokenResponese.response.id,
@@ -38,22 +35,23 @@ export const usePayment = () => {
                     "payment_type": "single",
                     "sub_payments": []
                 }
+                //Realiza el pago...
                 let paymentResponse = await makePayment(payParams)
 
-                if(paymentResponse.okResponse && paymentResponse.response.status === 'approved'){
+                if (paymentResponse.okResponse && paymentResponse.response.status === 'approved') {
                     setStatusPayment(paymentResponse.response)
-                }else{
-                    failPrecess('No se pudo procesar su pago, intente mas tarde.')
+                } else {
+                    failProcess('No se pudo procesar su pago, intente mas tarde.')
                 }
             }
             else {
-                failPrecess('No se pudo procesar su pago, la tarjeta se encuentra inactiva.')
+                failProcess('No se pudo procesar su pago, la tarjeta se encuentra inactiva.')
             }
         } else {
-            failPrecess('No se pudo procesar su pago, intente mas tarde.')
+            failProcess('No se pudo procesar su pago, intente mas tarde.')
         }
 
-        const failPrecess = (message) => {
+        const failProcess = (message) => {
             window.alert(message)
             setStatusPayment(undefined)
         }

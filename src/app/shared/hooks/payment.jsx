@@ -8,7 +8,7 @@ export const usePayment = () => {
         let apiStatusResponse = await getApiStatus();
         //Valida que el status este OK...
         if (apiStatusResponse.okResponse) {
-            let params = {
+            let tokenParams = {
                 "card_number": nroTarjeta,
                 "card_expiration_month": mesVencimiento,
                 "card_expiration_year": anioVencimiento,
@@ -20,17 +20,17 @@ export const usePayment = () => {
                 }
             };
             //Obtiene el token...
-            let tokenResponese = await getToken(params)
+            let tokenResponese = await getToken(tokenParams)
 
             if (tokenResponese.response.status == 'active') {
                 let payParams = {
-                    "site_transaction_id": "[ID DE LA TRANSACCIÓN]",
+                    "site_transaction_id": "1",  //nro de operacion ingresado por el comercio. Alfanumerico de hasta 40 caracteres
                     "token": tokenResponese.response.id,
-                    "payment_method_id": 1,
+                    "payment_method_id": 1, //El id debe coincidir con el medio de pago de tarjeta ingresada.Se valida que sean los primeros 6 digitos de la tarjeta ingresada al generar el token.
                     "bin": nroTarjeta.substr(0, 6),
                     "amount": monto,
                     "currency": "ARS",
-                    "installments": 1, //El id debe coincidir con el medio de pago de tarjeta ingresada.Se valida que sean los primeros 6 digitos de la tarjeta ingresada al generar el token.
+                    "installments": 1, 
                     "description": "Compra de puntos Flex",
                     "payment_type": "single",
                     "sub_payments": []

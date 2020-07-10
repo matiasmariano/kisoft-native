@@ -20,8 +20,6 @@ const Categoria = ({ navigation, route }) => {
     }, [])
 
     const irDetalleExperiencia = (titulo, id) => {
-        window.alert("as")
-
         navigation.navigate('DetalleExperiencias', { title: titulo, categoriaId: id })
     }
 

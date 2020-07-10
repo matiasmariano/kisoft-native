@@ -22,7 +22,7 @@ export const usePayment = () => {
             //Obtiene el token...
             let tokenResponese = await getToken(tokenParams)
 
-            if (tokenResponese.response.status == 'active') {
+            if (tokenResponese.okResponse && tokenResponese.response.status == 'active') {
                 let payParams = {
                     "site_transaction_id": "1",  //nro de operacion ingresado por el comercio. Alfanumerico de hasta 40 caracteres
                     "token": tokenResponese.response.id,
@@ -30,7 +30,7 @@ export const usePayment = () => {
                     "bin": nroTarjeta.substr(0, 6),
                     "amount": monto,
                     "currency": "ARS",
-                    "installments": 1, 
+                    "installments": 1,
                     "description": "Compra de puntos Flex",
                     "payment_type": "single",
                     "sub_payments": []

@@ -22,7 +22,7 @@ export const usePayment = () => {
             //Obtiene el token...
             let tokenResponese = await getToken(tokenParams)
 
-            if (tokenResponese.okResponse && tokenResponese.response.status == 'active') {
+            if (tokenResponese.okResponse && tokenResponese.data.status == 'active') {
                 let payParams = {
                     "site_transaction_id": "1",  //nro de operacion ingresado por el comercio. Alfanumerico de hasta 40 caracteres
                     "token": tokenResponese.response.id,
@@ -38,8 +38,8 @@ export const usePayment = () => {
                 //Realiza el pago...
                 let paymentResponse = await makePayment(payParams)
 
-                if (paymentResponse.okResponse && paymentResponse.response.status === 'approved') {
-                    setStatusPayment(paymentResponse.response)
+                if (paymentResponse.okResponse && paymentResponse.data.status === 'approved') {
+                    setStatusPayment(paymentResponse.data)
                 } else {
                     failProcess('No se pudo procesar su pago, intente mas tarde.')
                 }

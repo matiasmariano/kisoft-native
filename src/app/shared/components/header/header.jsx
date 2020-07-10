@@ -13,7 +13,7 @@ const header = ({ points, title, descuenta = false }) => (
                 }
                 <Text style={{ fontSize: 25 }}>{decimalFormat(points)}</Text>
                 <View style={styles.line} />
-                <Text>{title}</Text>
+                <Text style={styles.headerText}>{title}</Text>
             </View>
             :
             null}
@@ -44,11 +44,15 @@ const styles = {
         // padding: 20,
         borderRadius: 15,
         elevation: 4,
+        paddingTop: 10
     },
     line: {
         backgroundColor: 'black',
         height: '1%',
         width: '75%',
         margin: 5
+    },
+    headerText:{
+        fontSize: 18,
     }
 }

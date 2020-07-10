@@ -39,5 +39,5 @@ const errorHandler = (error) => {
 
 //Interceptor de responce OK.
 const successHandler = (response) => {
-    return { response: response, okResponse: true };
+    return { data: response, okResponse: true };
 }

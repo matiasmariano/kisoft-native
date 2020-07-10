@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../../../shared/components/header/header';
@@ -27,10 +27,10 @@ const Categoria = ({ navigation, route }) => {
 
     const catalogoList = catalogo.map((oferta, index) => {
         return (
-            <View style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`} >
+            <TouchableOpacity style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
                 <>
                     <Image source={{ uri: oferta.imagen }} style={styles.imagen} onPress={() => irDetalleExperiencia('', oferta.id)} />
-                    <TagPuntos points={oferta.costo} />
+                    <TagPuntos points={oferta.costo} top={170} left={10} />
                 </>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={styles.titulo}>{oferta.titulo}</Text>
@@ -61,7 +61,7 @@ const Categoria = ({ navigation, route }) => {
                 </View>
 
                 {index < (catalogo.length - 1) ? <View style={styles.lineCategorias} /> : <View style={styles.marginEnd} />}
-            </View>
+            </TouchableOpacity >
         )
     })
 

@@ -16,12 +16,12 @@ import { buttonStyle } from '../../../../../assets/style/ButtonStyle';
 
 const Login = ({ authenticate }) => {
     const { token, getToken } = useNotifications()
-    //const { processPayment } = usePayment()
+    //const { processPayment, statusPayment } = usePayment()
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
     getToken()
-  //  processPayment('4507990000004905', '08', '20', '123', 'John Doe', '25123456', 1200)
+    //  processPayment('4507990000004905', '08', '20', '123', 'John Doe', '25123456', 1200)
     return (
         <View>
             <View>

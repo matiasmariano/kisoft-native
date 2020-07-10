@@ -56,7 +56,7 @@ export const usePayment = () => {
             setStatusPayment(undefined)
         }
     }
-    return { processPayment }
+    return { processPayment, statusPayment }
 }
 
 /*

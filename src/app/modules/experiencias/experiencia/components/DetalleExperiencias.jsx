@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react'
+import { View, Text, Image, ScrollView } from 'react-native'
 import { get } from '../services/experienciaServices';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from '../../../../shared/components/Carrusel'
@@ -73,7 +73,7 @@ const Experiencia = ({ navigation, route }) => {
                         </Text>
                     </View>
                     <View style={styles.containerInformacion}>
-                        <ButtonK title={'Reservar'} style={styles.styleButton} onPress={() => { }} />
+                        <ButtonK title={'Reservar'} style={styles.styleButton} onPress={() => navigation.navigate('Reserva', { title: '', experienciaId: route.params.experienciaId })} />
                     </View>
                 </ScrollView>
             </View >

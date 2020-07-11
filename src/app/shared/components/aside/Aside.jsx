@@ -14,6 +14,7 @@ import { navigationRef } from '../RootNavigation'
 import Home from "../../../modules/experiencias/categorias/components/Home";
 import Categoria from "../../../modules/experiencias/categoria/components/Categoria";
 import DetalleExperiencias from "../../../modules/experiencias/experiencia/components/DetalleExperiencias";
+import Reserva from "../../../modules/experiencias/reserva/components/Reserva";
 
 //Multiflex...
 import Multiflex from "../../../modules/multiflex/categorias/components/Multiflex"
@@ -28,6 +29,7 @@ function HomeScreens() {
       <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="Categoria" component={Categoria} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="DetalleExperiencias" component={DetalleExperiencias} options={({ route, navigation }) => (options(navigation, route))} />
+      <Stack.Screen name="Reserva" component={Reserva} options={({ route, navigation }) => (options(navigation, route))} />
     </Stack.Navigator>
   );
 }

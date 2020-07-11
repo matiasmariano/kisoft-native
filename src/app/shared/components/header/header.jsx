@@ -32,7 +32,7 @@ const styles = {
     },
     pointsContainer: {
         width: '80%',
-        height: '15%',
+        height: 105,
         backgroundColor: 'white',
         marginLeft: '10%',
         marginBottom: 10,
@@ -53,6 +53,6 @@ const styles = {
         margin: 5
     },
     headerText:{
-        fontSize: 18,
+        fontSize: 14,
     }
 }

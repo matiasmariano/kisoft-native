@@ -49,7 +49,7 @@ const DetalleSorteo = (props) => {
                 type={'info'}
             />
 
-            <Header points={store.dataSorteo.costo} descuenta={true} title={'NOMBRE DEL SORTEO'}/>
+            <Header points={store.dataSorteo.costo} descuenta={true} title={store.dataSorteo.titulo}/>
             <ScrollView>
                 <View style={styles.body}>
                     <Image style={styles.bodyImagen} source={{ uri: store.dataSorteo.imagen }} />

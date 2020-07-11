@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, Image, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { get } from '../Services/experienciaServices';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from '../../../../shared/components/Carrusel'

@@ -73,7 +73,7 @@ const Experiencia = ({ navigation, route }) => {
                         </Text>
                     </View>
                     <View style={styles.containerInformacion}>
-                        <ButtonK title={'Reservar'} style={styles.styleButton} onPress={() => { }} />
+                        <ButtonK title={'Reservar'} style={styles.styleButton} onPress={() => navigation.navigate('Reserva', { title: '', experienciaId: route.params.experienciaId })} />
                     </View>
                 </ScrollView>
             </View >

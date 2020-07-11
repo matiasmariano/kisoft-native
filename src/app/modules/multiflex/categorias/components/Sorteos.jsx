@@ -46,8 +46,7 @@ export default Sorteos;
 const styles = StyleSheet.create({
     itemContainer: {
         backgroundColor: 'white',
-        marginHorizontal: 29,
-        marginVertical: 0,
+        marginHorizontal: 20,
         borderRadius: 12,
         height: 180,
 

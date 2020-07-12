@@ -42,16 +42,16 @@ const Reserva = ({ navigation, route }) => {
     let stepActual;
     switch (stepNumber) {
         case 'A':
-            stepActual = <StepA setInputReserva={setInputReserva} inputReserva={inputReserva} />
+            stepActual = <StepA setInputReserva={setInputReserva} inputReserva={inputReserva} setStepNumber={setStepNumber} />
             break;
         case 'B':
-            stepActual = <StepB setInputReserva={setInputReserva} inputReserva={inputReserva} />
+            stepActual = <StepB setInputReserva={setInputReserva} inputReserva={inputReserva} setStepNumber={setStepNumber} />
             break;
         case 'C':
-            stepActual = <StepC setInputReserva={setInputReserva} inputReserva={inputReserva} />
+            stepActual = <StepC setInputReserva={setInputReserva} inputReserva={inputReserva} setStepNumber={setStepNumber} />
             break;
         case 'D':
-            stepActual = <StepD setInputReserva={setInputReserva} inputReserva={inputReserva} />
+            stepActual = <StepD setInputReserva={setInputReserva} inputReserva={inputReserva} setStepNumber={setStepNumber} />
             break;
         default:
             break;

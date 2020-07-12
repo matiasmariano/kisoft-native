@@ -12,10 +12,6 @@ LocaleConfig.locales['es'] = {
 
 const CalendarCustom = ({ selectedDate, onPressDate, disabledDates }) => {
 
-    const onDayPress = (a, b) => {
-        onPressDate(a, b)
-    }
-
     //Crea el estilo para las fechas desactivadas...
     let dd = {}
     disabledDates.forEach(date => {
@@ -38,9 +34,13 @@ const CalendarCustom = ({ selectedDate, onPressDate, disabledDates }) => {
     return (
         <>
             <Calendar
+                theme={{
+                    arrowColor: 'red',
+                    todayTextColor: 'red',
+                }}
                 markingType={'custom'}
                 markedDates={dd}
-                onDayPress={(day) => { onDayPress('selected day', day) }}
+                onDayPress={(day) => { !disabledDates.includes(day.dateString) && onPressDate(day) }}
             />
         </>
     )

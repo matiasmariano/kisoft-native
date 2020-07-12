@@ -8,7 +8,7 @@ const TimePicker = ({ isDatePickerVisible, handleConfirm, hideDatePicker }) => {
             <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="time"
-                onConfirm={handleConfirm}
+                onConfirm={(dateTime) => { handleConfirm(dateTime) }}
                 onCancel={hideDatePicker}
                 headerTextIOS="Ingresá un horario"
             />
@@ -17,3 +17,5 @@ const TimePicker = ({ isDatePickerVisible, handleConfirm, hideDatePicker }) => {
 }
 
 export default TimePicker;
+
+//https://www.npmjs.com/package/react-native-modal-datetime-picker

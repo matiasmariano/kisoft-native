@@ -11,33 +11,38 @@ import { getDisponibildad } from '../services/ReservaServices';
 const Reserva = ({ navigation, route }) => {
     const [stepNumber, setStepNumber] = useState('A')
     const [expercienciaInfo, setExpercienciaInfo] = useState(undefined)
-    const [inputReserva, setInputReserva] = useState({
-        dateTime: {
-            date: '',
-            houre: ''
-        }, dateTimeAlt: {
-            date: '',
-            houre: ''
-        },
-        datosPersonales: {
-            nombre: '',
-            apellido: '',
-            dni: '',
-            mail: '',
-            sexo: '',
-            telefono: '',
-            celular: ''
-        }
-    })
+    const [inputReserva, setInputReserva] = useState(undefined)
 
     useEffect(() => {
         const call = async () => {
             let e = await getDisponibildad(route.params.experienciaId)
             if (e.data)
                 setExpercienciaInfo(e.data);
+
+            setInputReserva({
+                dateTime: {
+                    date: '',
+                    houre: ''
+                }, dateTimeAlt: {
+                    date: '',
+                    houre: ''
+                },
+                datosPersonales: {
+                    nombre: '',
+                    apellido: '',
+                    dni: '',
+                    mail: '',
+                    sexo: '',
+                    telefono: '',
+                    celular: ''
+                }
+            })
         }
         call()
     }, [])
+
+    if (!inputReserva)
+        return null
 
     let stepActual;
     switch (stepNumber) {

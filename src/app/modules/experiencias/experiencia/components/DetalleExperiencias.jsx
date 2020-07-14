@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import { get } from '../Services/experienciaServices';
+import { get } from '../services/experienciaServices';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from '../../../../shared/components/Carrusel'
 import Header from '../../../../shared/components/header/header';
 import TagPuntos from '../../../../shared/components/tagPuntos/TagPuntos'
 import ButtonK from '../../../../shared/components/inputs/ButtonK'
-import LinkButton from '../../../../shared/components/inputs/LinkButton'
 import { Rating } from 'react-native-ratings';
-import Modal from 'react-native-modal';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Map from '../../../../shared/components/map/Map'
+import ModalK from '../../../../shared/components/modal/ModalK'
 
 const Experiencia = ({ navigation, route }) => {
 
     const [experiencia, setExperiencia] = useState(undefined)
-    const [isModalVisible, setModalVisible] = useState(false);
-
-    const toggleModal = (value) => {
-        setModalVisible(!isModalVisible);
-    };
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
         const call = async () => {
@@ -37,7 +31,7 @@ const Experiencia = ({ navigation, route }) => {
         });
     }
 
-    return (
+    return ( 
         experiencia ?
             <View style={styles.body}>
                 <Header points={20000} title={experiencia.name} descuenta={true} title={experiencia.nombre} />
@@ -81,22 +75,23 @@ const Experiencia = ({ navigation, route }) => {
                         </Text>
                     </View>
                     <View>
-                        <Text style={styles.verMapa} onPress={() => {toggleModal()}}>
-                                Ver Mapa
+                        <Text style={styles.verMapa} onPress={() => { setIsModalVisible(true) }}>
+                            Ver Mapa
                         </Text>
                     </View>
                     <View style={styles.containerInformacion}>
                         <ButtonK title={'Reservar'} style={styles.styleButton} onPress={() => navigation.navigate('Reserva', { title: '', experienciaId: route.params.experienciaId })} />
                     </View>
 
-                    <Map isModalVisible={isModalVisible}
-                         coordenadas={{
-                            latitude: -34.724806,
-                            longitude: -58.251333,
-                            latitudeDelta: 0.015,
-                            longitudeDelta: 0.0121,
-                        }}
-                        onBackButtonPress={() => { setModalVisible(this) }}/>
+                    <ModalK isModalVisible={isModalVisible}
+                        componente={<Map
+                            coordenadas={{
+                                latitude: -34.724806,
+                                longitude: -58.251333,
+                                latitudeDelta: 0.015,
+                                longitudeDelta: 0.0121,
+                            }} />}
+                        onSwipeComplete={() => { setIsModalVisible(false) }} />
                 </ScrollView>
             </View >
             :

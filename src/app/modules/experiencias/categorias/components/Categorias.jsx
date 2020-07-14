@@ -1,9 +1,9 @@
 import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { get } from '../services/HomeServices';
+import { get } from '../services/CategoriasServices';
 
-const Home = ({ navigation }) => {
+const Categorias = ({ navigation }) => {
 
     const [categorias, setCategorias] = useState([])
 
@@ -50,7 +50,7 @@ const Home = ({ navigation }) => {
     );
 };
 
-export default Home;
+export default Categorias;
 
 
 const styles = {

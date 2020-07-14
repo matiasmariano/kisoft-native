@@ -9,9 +9,11 @@ import ButtonK from '../inputs/ButtonK';
 import CustomDrawer from './CustomDrawer';
 import { navigationRef } from '../RootNavigation'
 
+//Home
+import Home from "../../../modules/home/home/components/Home";
 
 //Experiencias...
-import Home from "../../../modules/experiencias/categorias/components/Home";
+import Categorias from "../../../modules/experiencias/categorias/components/Categorias";
 import Categoria from "../../../modules/experiencias/categoria/components/Categoria";
 import DetalleExperiencias from "../../../modules/experiencias/experiencia/components/DetalleExperiencias";
 import Reserva from "../../../modules/experiencias/reserva/components/Reserva";
@@ -23,10 +25,10 @@ import DetalleSorteo from "../../../modules/multiflex/detalle/Components/Detalle
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-function HomeScreens() {
+function ExperienciasScreens() {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route))} />
+    <Stack.Navigator initialRouteName="Categorias">
+      <Stack.Screen name="Categorias" component={Categorias} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="Categoria" component={Categoria} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="DetalleExperiencias" component={DetalleExperiencias} options={({ route, navigation }) => (options(navigation, route))} />
       <Stack.Screen name="Reserva" component={Reserva} options={({ route, navigation }) => (options(navigation, route))} />
@@ -46,7 +48,8 @@ function PuntosFlexScreens() {
 const Aside = ({ logout }) => (
   <NavigationContainer theme={styles.theme} ref={navigationRef}>
     <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout} />}>
-      <Drawer.Screen name="Home" component={HomeScreens} />
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Experiencias" component={ExperienciasScreens} />
       <Drawer.Screen name="MultiFlex" component={PuntosFlexScreens} />
       <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
     </Drawer.Navigator>
@@ -78,14 +81,14 @@ function options(navigation, route) {
     headerLeft: () =>
       route.name == 'Home' ?
         (
-           <Icon
-             name="ios-menu"
-             size={40}
-             color="#ffffff"
-             style={{
-               marginLeft: 20
-             }}
-             onPress={() => navigation.openDrawer()}
+          <Icon
+            name="ios-menu"
+            size={40}
+            color="#ffffff"
+            style={{
+              marginLeft: 20
+            }}
+            onPress={() => navigation.openDrawer()}
           />
         )
         :

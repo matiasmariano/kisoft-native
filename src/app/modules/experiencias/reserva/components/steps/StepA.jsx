@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native'
 import CalendarCustom from '../../../../../shared/components/calendar/CalendarCustom'
 import TimePicker from '../../../../../shared/components/timePicker/TimePicker'
-import ButtonK from '../../../../../shared/components/inputs/ButtonK';
+import ButtonK from '../../../../../shared/components/inputs/ButtonK'
 
 const StepA = ({ inputReserva, setInputReserva, setStepNumber }) => {
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -15,7 +15,6 @@ const StepA = ({ inputReserva, setInputReserva, setStepNumber }) => {
         setInputReserva({ ...inputReserva, dateTime: { ...inputReserva.dateTime, houre: dateTime } })
         setDatePickerVisibility(false)
     }
-
     return (
         <View style={styles.container}>
             <CalendarCustom

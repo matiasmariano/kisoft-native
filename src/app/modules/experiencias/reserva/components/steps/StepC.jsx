@@ -3,7 +3,6 @@ import { View, Text, Image, ScrollView } from 'react-native'
 import ButtonK from '../../../../../shared/components/inputs/ButtonK';
 
 const StepC = ({ inputReserva, setInputReserva, setStepNumber }) => {
-
     return (
         <View style={styles.container}>
             <ButtonK

@@ -8,10 +8,18 @@ import TagPuntos from '../../../../shared/components/tagPuntos/TagPuntos'
 import ButtonK from '../../../../shared/components/inputs/ButtonK'
 import LinkButton from '../../../../shared/components/inputs/LinkButton'
 import { Rating } from 'react-native-ratings';
+import Modal from 'react-native-modal';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import Map from '../../../../shared/components/map/Map'
 
 const Experiencia = ({ navigation, route }) => {
 
     const [experiencia, setExperiencia] = useState(undefined)
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const toggleModal = (value) => {
+        setModalVisible(!isModalVisible);
+    };
 
     useEffect(() => {
         const call = async () => {
@@ -72,9 +80,23 @@ const Experiencia = ({ navigation, route }) => {
                             <Text>{experiencia.descripcion}</Text>
                         </Text>
                     </View>
+                    <View>
+                        <Text style={styles.verMapa} onPress={() => {toggleModal()}}>
+                                Ver Mapa
+                        </Text>
+                    </View>
                     <View style={styles.containerInformacion}>
                         <ButtonK title={'Reservar'} style={styles.styleButton} onPress={() => navigation.navigate('Reserva', { title: '', experienciaId: route.params.experienciaId })} />
                     </View>
+
+                    <Map isModalVisible={isModalVisible}
+                         coordenadas={{
+                            latitude: -34.724806,
+                            longitude: -58.251333,
+                            latitudeDelta: 0.015,
+                            longitudeDelta: 0.0121,
+                        }}
+                        onBackButtonPress={() => { setModalVisible(this) }}/>
                 </ScrollView>
             </View >
             :
@@ -119,5 +141,17 @@ const styles = {
         height: 41,
         marginLeft: '15%',
         marginTop: 26
+    },
+    map: {
+        height: '60%',
+        width: '100%',
+        marginTop: '25%'
+    },
+    verMapa: {
+        fontStyle: 'normal',
+        fontSize: 17,
+        color: 'rgb(56, 122, 171)',
+        marginLeft: '40%',
+        marginTop: 15
     }
 };

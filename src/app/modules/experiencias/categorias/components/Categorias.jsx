@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { getCategorias, getCategoriasId } from '../services/CategoriasServices';
+import { get, getCatalogByCategoryId } from '../services/CategoriasServices';
 import Filtros from '../../../../shared/components/filtros/Filtros'
 
 const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => {
@@ -9,7 +9,7 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => 
     const [categorias, setCategorias] = useState([])
 
     const irDetalleCategoria = async (titulo, id) => {
-        let c = await getCategoriasId(id)
+        let c = await getCatalogByCategoryId(id)
         if (c.data) {
             navigation.navigate('Categoria', { title: titulo, experiencias: c.data })
         }
@@ -21,7 +21,7 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => 
 
     useEffect(() => {
         const call = async () => {
-            let c = await getCategorias()
+            let c = await get()
             if (c.data)
                 setCategorias(c.data);
         }

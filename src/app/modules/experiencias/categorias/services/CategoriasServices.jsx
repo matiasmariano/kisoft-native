@@ -1,6 +1,6 @@
 import httpClientApi from '../../../../core/config/axios/httpClients/httpClientApi'
 
-export const getCategorias = async () => {
+export const get = async () => {
     return {
         data: [{
             titulo: 'Gastronomia',
@@ -22,7 +22,7 @@ export const getCategorias = async () => {
     }
 }
 
-export const getCategoriasId = async (categoriaId) => {
+export const getCatalogByCategoryId = async (categoriaId) => {
     return {
         data: [{
             imagen: 'https://gastronomiaycia.republica.com/wp-content/uploads/2017/10/mastergastronomiaesah2017-680x453.jpg',

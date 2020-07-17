@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 function HomeScreens(filterModalOpened, setFilterModalStatus) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={() => {return <Home filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Home" component={() => { return <Home filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }
@@ -36,10 +36,10 @@ function HomeScreens(filterModalOpened, setFilterModalStatus) {
 function ExperienciasScreens(filterModalOpened, setFilterModalStatus) {
   return (
     <Stack.Navigator initialRouteName="Categorias">
-      <Stack.Screen name="Categorias" component={() => {return <Categorias filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="Categoria" component={() => {return <Categoria filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="DetalleExperiencias" component={() => {return <DetalleExperiencias filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="Reserva" component={() => {return <Reserva filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Categorias" component={({ navigation, route }) => { return <Categorias filterModalOpened={filterModalOpened} route={route} setFilterModalStatus={setFilterModalStatus} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Categoria" component={({ navigation, route }) => { return <Categoria filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} route={route} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="DetalleExperiencias" component={() => { return <DetalleExperiencias filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Reserva" component={() => { return <Reserva filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }
@@ -47,8 +47,8 @@ function ExperienciasScreens(filterModalOpened, setFilterModalStatus) {
 function PuntosFlexScreens(filterModalOpened, setFilterModalStatus) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Multiflex" component={() => {return <Multiflex filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="DetalleSorteo" component={() => {return <DetalleSorteo filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} />}} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Multiflex" component={() => { return <Multiflex filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="DetalleSorteo" component={() => { return <DetalleSorteo filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }

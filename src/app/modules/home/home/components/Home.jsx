@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import Filtros from '../../../../shared/components/filtros/Filtros'
 
 const home = ({ navigation, route, filterModalOpened, setFilterModalStatus }) => {
@@ -8,7 +8,7 @@ const home = ({ navigation, route, filterModalOpened, setFilterModalStatus }) =>
             <Text>Pantalla principal</Text>
 
             <Filtros isModalVisible={filterModalOpened}
-                     setIsModalVisible={setFilterModalStatus}/>
+                setIsModalVisible={setFilterModalStatus} />
         </View>
     )
 }

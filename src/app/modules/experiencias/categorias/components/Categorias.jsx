@@ -2,8 +2,9 @@ import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { get } from '../services/CategoriasServices';
+import Filtros from '../../../../shared/components/filtros/Filtros'
 
-const Categorias = ({ navigation }) => {
+const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => {
 
     const [categorias, setCategorias] = useState([])
 
@@ -46,6 +47,9 @@ const Categorias = ({ navigation }) => {
                     {categoriasList}
                 </View>
             </ScrollView>
+
+            <Filtros isModalVisible={filterModalOpened}
+                     setIsModalVisible={setFilterModalStatus}/>
         </View>
     );
 };

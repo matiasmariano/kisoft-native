@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
+import ModalK from '../modal/ModalK';
 
 class Filtros extends Component {
     constructor(props){
@@ -11,9 +12,9 @@ class Filtros extends Component {
 
         return (
             <View>
-                <View>
-                    <Text>My Name</Text>
-                </View>
+                <ModalK isModalVisible={this.props.isModalVisible}
+                componente={<View />}
+                onSwipeComplete={() => { this.props.setIsModalVisible(false) }} />
             </View>
         );
     }

@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 class CustomDrawer extends Component {
     constructor(props){
         super(props);
-        this.state = {activeItemKey: 'Experiencias'};
+        this.state = {activeItemKey: 'Home'};
     }
 
     render(){
@@ -21,6 +21,13 @@ class CustomDrawer extends Component {
                     <Text style={styles.email}>MyEmail@hotmail.com</Text>
                 </View>
                 <Divider style={styles.divider} />
+                <View style={[styles.screenStyle, this.state.activeItemKey =='Home' ? styles.activeBackgroundColor : null]}>
+                    <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Home' ? styles.selectedTextStyle : null]} 
+                    onPress={() => {
+                        this.setState({activeItemKey: 'Home'});
+                        navigation.navigate('Home');
+                    }}>Home</Text>
+                </View>
                 <View style={[styles.screenStyle, this.state.activeItemKey =='Experiencias' ? styles.activeBackgroundColor : null]}>
                     <Text style={[styles.screenTextStyle, this.state.activeItemKey =='Experiencias' ? styles.selectedTextStyle : null]} 
                     onPress={() => {

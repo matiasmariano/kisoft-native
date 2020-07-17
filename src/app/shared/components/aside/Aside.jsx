@@ -25,6 +25,14 @@ import DetalleSorteo from "../../../modules/multiflex/detalle/Components/Detalle
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
+function HomeScreens() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route))} />
+    </Stack.Navigator>
+  );
+}
+
 function ExperienciasScreens() {
   return (
     <Stack.Navigator initialRouteName="Categorias">
@@ -48,7 +56,7 @@ function PuntosFlexScreens() {
 const Aside = ({ logout }) => (
   <NavigationContainer theme={styles.theme} ref={navigationRef}>
     <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout} />}>
-      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Home" component={HomeScreens} />
       <Drawer.Screen name="Experiencias" component={ExperienciasScreens} />
       <Drawer.Screen name="MultiFlex" component={PuntosFlexScreens} />
       <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />

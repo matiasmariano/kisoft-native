@@ -1,13 +1,13 @@
-import Axios from 'axios';
+import httpClientDecidir from '../../../app/core/config/axios/httpClients/httpClientDecidir'
 
 export const getApiStatus = async () => {
-  return Axios.get('https://developers.decidir.com/api/v2/healthcheck');
+  return httpClientDecidir.get('/healthcheck');
 }
 
 export const getToken = async () => {
-  return Axios.post('https://developers.decidir.com/api/v2/tokens', JSON.stringify(parameter));
+  return httpClientDecidir.post('/tokens', JSON.stringify(parameter));
 }
 
 export const makePayment = async () => {
-  return Axios.post('https://developers.decidir.com/api/v2/payments', JSON.stringify(parameter));
+  return httpClientDecidir.post('/payments', JSON.stringify(parameter));
 }

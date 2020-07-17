@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import httpClientApi from '../../../../core/config/axios/httpClients/httpClientApi'
 
 export const get = async (experienciaId) => {
     return {

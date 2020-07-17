@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import { get } from '../Services/experienciaServices';
+import { get } from '../services/experienciaServices';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from '../../../../shared/components/Carrusel'
 import Header from '../../../../shared/components/header/header';

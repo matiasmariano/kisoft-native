@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 function HomeScreens(filterModalOpened, setFilterModalStatus) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={() => { return <Home filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }
@@ -38,8 +38,8 @@ function ExperienciasScreens(filterModalOpened, setFilterModalStatus) {
     <Stack.Navigator initialRouteName="Categorias">
       <Stack.Screen name="Categorias" component={({ navigation, route }) => { return <Categorias filterModalOpened={filterModalOpened} route={route} setFilterModalStatus={setFilterModalStatus} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
       <Stack.Screen name="Categoria" component={({ navigation, route }) => { return <Categoria filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} route={route} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="DetalleExperiencias" component={() => { return <DetalleExperiencias filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="Reserva" component={() => { return <Reserva filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="DetalleExperiencias" component={DetalleExperiencias} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Reserva" component={Reserva} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }
@@ -47,8 +47,8 @@ function ExperienciasScreens(filterModalOpened, setFilterModalStatus) {
 function PuntosFlexScreens(filterModalOpened, setFilterModalStatus) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Multiflex" component={() => { return <Multiflex filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="DetalleSorteo" component={() => { return <DetalleSorteo filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Multiflex" component={Multiflex} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="DetalleSorteo" component={DetalleSorteo} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }
@@ -81,15 +81,19 @@ function options(navigation, route, filterModalOpened, setFilterModalStatus) {
       fontWeight: '400'
     },
     headerRight: () => (
-      <IconAwasome
-        name="filter"
-        size={25}
-        color="#ffffff"
-        style={{
-          marginRight: 20
-        }}
-        onPress={() => { setFilterModalStatus(!filterModalOpened) }}
-      />
+      ['Categorias', 'Categoria'].includes(route.name) ?
+        < IconAwasome
+          name="filter"
+          size={25}
+          color="#ffffff"
+          style={{
+            marginRight: 20
+          }
+          }
+          onPress={() => { setFilterModalStatus(!filterModalOpened) }}
+        />
+        :
+        null
     ),
     headerLeft: () =>
       route.name == 'Home' ?

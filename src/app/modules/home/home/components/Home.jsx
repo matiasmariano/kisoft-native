@@ -1,17 +1,11 @@
 import React, { Component, useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import Filtros from '../../../../shared/components/filtros/Filtros'
 
-const home = ({ navigation, route, filterModalOpened, setFilterModalStatus }) => {
-    return (
-        <View style={styles.container}>
-            <Text>Pantalla principal</Text>
-
-            <Filtros isModalVisible={filterModalOpened}
-                setIsModalVisible={setFilterModalStatus} />
-        </View>
-    )
-}
+const home = ({ navigation, route }) => (
+    <View style={styles.container}>
+        <Text>Pantalla principal</Text>
+    </View>
+)
 
 export default home;
 

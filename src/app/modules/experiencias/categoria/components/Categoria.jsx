@@ -3,20 +3,15 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../../../../shared/components/header/header';
-import { get } from '../services/CategoriaService';
 import TagPuntos from '../../../../shared/components/tagPuntos/TagPuntos'
+import Filtros from '../../../../shared/components/filtros/Filtros'
 
-const Categoria = ({ navigation, route }) => {
+const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus }) => {
 
     const [catalogo, setCatalogo] = useState([])
 
     useEffect(() => {
-        const call = async () => {
-            let c = await get(route.params.categoriaId)
-            if (c.data)
-                setCatalogo(c.data);
-        }
-        call()
+        setCatalogo(route.params.experiencias)
     }, [])
 
     const irDetalleExperiencia = (titulo, id) => {
@@ -71,6 +66,10 @@ const Categoria = ({ navigation, route }) => {
                     {catalogoList}
                 </View>
             </ScrollView>
+
+            <Filtros isModalVisible={filterModalOpened}
+                setIsModalVisible={setFilterModalStatus}
+                handlerUpdate={setCatalogo} />
         </View >
     );
 };

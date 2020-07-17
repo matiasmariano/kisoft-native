@@ -1,20 +1,27 @@
 import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { get } from '../services/CategoriasServices';
+import { getCategorias, getCategoriasId } from '../services/CategoriasServices';
 import Filtros from '../../../../shared/components/filtros/Filtros'
 
 const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => {
 
     const [categorias, setCategorias] = useState([])
 
-    const irDetalleCategoria = (titulo, id) => {
-        navigation.navigate('Categoria', { title: titulo, categoriaId: id })
+    const irDetalleCategoria = async (titulo, id) => {
+        let c = await getCategoriasId(id)
+        if (c.data) {
+            navigation.navigate('Categoria', { title: titulo, experiencias: c.data })
+        }
+    }
+
+    const irDetalleCategoriaFiltrado = (data) => {
+        navigation.navigate('Categoria', { title: '', experiencias: data })
     }
 
     useEffect(() => {
         const call = async () => {
-            let c = await get()
+            let c = await getCategorias()
             if (c.data)
                 setCategorias(c.data);
         }
@@ -49,7 +56,8 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => 
             </ScrollView>
 
             <Filtros isModalVisible={filterModalOpened}
-                     setIsModalVisible={setFilterModalStatus}/>
+                setIsModalVisible={setFilterModalStatus}
+                handlerUpdate={irDetalleCategoriaFiltrado} />
         </View>
     );
 };

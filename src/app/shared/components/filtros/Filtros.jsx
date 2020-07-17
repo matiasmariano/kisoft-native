@@ -1,23 +1,16 @@
-import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import ModalK from '../modal/ModalK';
+import FiltrosDetail from './FiltrosDetail'
 
-class Filtros extends Component {
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
-
-    render(){
-
-        return (
-            <View>
-                <ModalK isModalVisible={this.props.isModalVisible}
-                componente={<View />}
-                onSwipeComplete={() => { this.props.setIsModalVisible(false) }} />
-            </View>
-        );
-    }
-};
+const Filtros = ({ isModalVisible, setIsModalVisible, handlerUpdate }) => (
+    <View>
+        <ModalK isModalVisible={isModalVisible}
+            componente={
+                <FiltrosDetail handlerUpdate={handlerUpdate} />
+            }
+            onSwipeComplete={() => { setIsModalVisible(false) }} />
+    </View>
+)
 
 export default Filtros;

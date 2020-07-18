@@ -69,7 +69,8 @@ const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus 
 
             <Filtros isModalVisible={filterModalOpened}
                 setIsModalVisible={setFilterModalStatus}
-                handlerUpdate={setCatalogo} />
+                handlerUpdate={setCatalogo}
+                customStyle={styles.modal} />
         </View >
     );
 };
@@ -131,5 +132,12 @@ const styles = {
     },
     marginEnd: {
         marginBottom: 50
+    },
+    modal:{
+        shadowOpacity: 0.5,
+        backgroundColor: 'white',
+        shadowOpacity: 0.3,
+        flex: 1,
+        margin: 0
     }
 };

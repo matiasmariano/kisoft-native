@@ -2,20 +2,25 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 
-const ModalK = ({ isModalVisible, componente, onSwipeComplete }) => (
-    <Modal
-        isVisible={isModalVisible}
-        backdropOpacity={0.5}
-        onSwipeComplete={(value) => onSwipeComplete(false)}
-        style={styles.modal}>
-        <View style={{ flex: 1, }}>
-            {componente}
-            <Text
-                style={styles.text}
-                onPress={() => onSwipeComplete(false)}>Cerrar</Text>
-        </View>
-    </Modal>
-);
+const ModalK = ({ isModalVisible, componente, onSwipeComplete, customStyle }) => {
+
+    const styleModal = customStyle !== null ? customStyle : styles.modal;
+
+    return( 
+        <Modal
+            isVisible={isModalVisible}
+            backdropOpacity={0.5}
+            onSwipeComplete={(value) => onSwipeComplete(false)}
+            style={styleModal}>
+            <View style={{ flex: 1, }}>
+                {componente}
+                {/*<Text
+                    style={styles.text}
+                    onPress={() => onSwipeComplete(false)}>Cerrar</Text>*/}
+            </View>
+        </Modal>
+    )
+};
 
 export default ModalK;
 
@@ -27,7 +32,7 @@ const styles = {
         backgroundColor: 'white',
         maxHeight: 600,
         borderRadius: 15,
-        marginTop: '25%'
+        marginTop: '25%',
     },
     text: {
         fontSize: 20,

@@ -57,7 +57,8 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => 
 
             <Filtros isModalVisible={filterModalOpened}
                 setIsModalVisible={setFilterModalStatus}
-                handlerUpdate={irDetalleCategoriaFiltrado} />
+                handlerUpdate={irDetalleCategoriaFiltrado}
+                customStyle={styles.modal} />
         </View>
     );
 };
@@ -123,5 +124,12 @@ const styles = {
         textAlign: 'center',
         marginRight: 40,
         fontWeight: '700'
+    },
+    modal:{
+        shadowOpacity: 0.5,
+        backgroundColor: 'white',
+        shadowOpacity: 0.3,
+        flex: 1,
+        margin: 0
     }
 }

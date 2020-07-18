@@ -33,6 +33,8 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
         setExpanded(newList)
     };
 
+    const categorias = ['Gastronomia', 'Aventura', 'Bienestar', 'Escapadas', 'Espectaculos', 'Familia', 'Variedades', 'Giftcard'];
+
     return (
         <>
             <View style={styles.header}>
@@ -63,7 +65,7 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
                                                      sliderLength={310}
                                                      containerStyle={{ marginLeft: '12%' }}
                                                      customMarker={() => <View style={styles.customMarkerStyle}></View>}/>
-                                        <Text style={styles.sliderValues}>{1500} - {25000}</Text>
+                                        <Text style={styles.sliderValues}><Text>{1500}</Text> - <Text>{25000}</Text></Text>
                                     </View>
                                    }/>
                     </List.Accordion>
@@ -174,6 +176,11 @@ const styles = {
     },
     sliderValues: {
         fontSize: 16,
-        color: '#464646'
+        color: '#464646',
+        marginLeft: '40%',
+        borderBottomColor: '#464646',
+        borderBottomWidth: 2,
+        flexDirection:"row",
+        alignSelf:"flex-start",
     }
 }

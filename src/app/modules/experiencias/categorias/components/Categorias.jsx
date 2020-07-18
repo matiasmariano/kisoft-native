@@ -127,7 +127,7 @@ const styles = {
     },
     modal:{
         shadowOpacity: 0.5,
-        backgroundColor: 'white',
+        backgroundColor: '#E5E5E5',
         shadowOpacity: 0.3,
         flex: 1,
         margin: 0

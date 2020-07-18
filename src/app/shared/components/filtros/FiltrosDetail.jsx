@@ -56,7 +56,15 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
                         titleStyle={styles.accordionTitle}>
                         <List.Item title=""
                                    left={props =>
-                                       <MultiSlider/>
+                                    <View>
+                                        <MultiSlider values={[0, 250]}
+                                                     unselectedStyle={{ height: 2, backgroundColor: '#686868' }}
+                                                     selectedStyle={{ backgroundColor: '#E43B52', height: 2 }}
+                                                     sliderLength={310}
+                                                     containerStyle={{ marginLeft: '12%' }}
+                                                     customMarker={() => <View style={styles.customMarkerStyle}></View>}/>
+                                        <Text style={styles.sliderValues}>{1500} - {25000}</Text>
+                                    </View>
                                    }/>
                     </List.Accordion>
 
@@ -157,5 +165,15 @@ const styles = {
         fontSize: 19,
         color: '#464646',
         height: 30
+    },
+    customMarkerStyle: {
+        width: 17,
+        height: 17,
+        backgroundColor: '#E43B52',
+        borderRadius: 13
+    },
+    sliderValues: {
+        fontSize: 16,
+        color: '#464646'
     }
 }

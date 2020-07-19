@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconAwasome from 'react-native-vector-icons/FontAwesome5';
 import { List } from 'react-native-paper';
@@ -18,7 +18,16 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
     ]);
 
     const [parametrosFiltro, setParametrosFiltro] = useState({
-
+        'Categorias': [
+            { name: 'Gastronomia', selected: false },
+            { name: 'Aventura', selected: false },
+            { name: 'Bienestar', selected: false },
+            { name: 'Escapadas', selected: false },
+            { name: 'Espectaculos', selected: false },
+            { name: 'Familia', selected: false },
+            { name: 'Variedades', selected: false },
+            { name: 'Giftcard', selected: false },
+        ]
     })
 
     const onUpdate = () => {
@@ -33,7 +42,31 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
         setExpanded(newList)
     };
 
-    const categorias = ['Gastronomia', 'Aventura', 'Bienestar', 'Escapadas', 'Espectaculos', 'Familia', 'Variedades', 'Giftcard'];
+    const handleFilterElementSelection = (filterName, elementName, value) => {
+        let state = parametrosFiltro;
+        let index = -1;
+        
+        state[filterName].forEach((element, i) => {
+            if(element.name == elementName)
+                index = i;
+        });
+
+        state[filterName][index].selected = value;
+        setParametrosFiltro({...state});
+    }
+
+    let categorias = ['Gastronomia', 'Aventura', 'Bienestar', 'Escapadas', 'Espectaculos', 'Familia', 'Variedades', 'Giftcard'].map(item => {
+        let itemSelected = parametrosFiltro['Categorias'].filter(categoria => { return categoria.name === item })[0].selected;
+
+        return (
+            <View key={item} style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>{item}</Text>
+                <TouchableOpacity style={itemSelected ? styles.outer : {}}>
+                    <TouchableOpacity style={itemSelected ? styles.checkedCircle : styles.circle} onPress={() => { handleFilterElementSelection('Categorias', item, !itemSelected) }}/>
+                </TouchableOpacity>
+            </View>
+        )
+    });
 
     return (
         <>
@@ -76,8 +109,12 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
                         onPress={() => handlePress('categoria')}
                         style={styles.accordionContainer}
                         titleStyle={styles.accordionTitle}>
-                        <List.Item title="First item" />
-                        <List.Item title="Second item" />
+                        <List.Item title=""
+                                   left={props => 
+                                    <View style={{width: '100%'}}>
+                                        {categorias}
+                                    </View>
+                                   } />
                     </List.Accordion>
 
                     <List.Accordion
@@ -182,5 +219,48 @@ const styles = {
         borderBottomWidth: 2,
         flexDirection:"row",
         alignSelf:"flex-start",
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 5,
+        height: 55,
+        backgroundColor: '#F9F9F9',
+        width: '100%',
+    },
+    circle: {
+        height: 20,
+        width: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#ACACAC',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 25
+    },
+    checkedCircle: {
+        width: 10,
+        height: 10,
+        borderRadius: 10,
+        backgroundColor: '#EE4148',
+        marginRight: 25,
+    },
+    buttonText: {
+        marginLeft: 18,
+        fontSize: 16,
+        color: '#464646'
+    },
+    outer: {
+        paddingTop: 5,
+        paddingLeft: 5,
+        paddingRight: 5,
+        paddingBottom: 5,
+        width: 25,
+        height: 25,
+        borderColor: '#EE4148',
+        borderWidth: 3,
+        borderRadius: 12,
+        marginRight: 25
     }
 }

@@ -1,6 +1,5 @@
 export const requestHandler = (request) => {
     if (isHandlerEnabled(request)) {
-        request.headers['Authorization'] = 'token';
         request.headers['Content-Type'] = 'application/json';
     }
     return request
@@ -16,5 +15,7 @@ export const successHandler = (response) => {
 }
 
 export const errorHandler = (error) => {
+    console.log(JSON.stringify(error))
+
     return { error: error, okResponse: false }
 }

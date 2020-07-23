@@ -34,7 +34,7 @@ const StepB = ({ inputReserva, setInputReserva, setStepNumber }) => {
             <View style={styles.buttonContainer}>
                 <ButtonK
                     title="Anterior"
-                    style={styles.nextButton}
+                    style={styles.backButton}
                     onPress={() => setStepNumber('A')} />
                 <ButtonK
                     title="Siguiente"
@@ -64,6 +64,16 @@ const styles = {
     },
     nextButton: {
         backgroundColor: '#E0273E',
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        height: 50,
+        marginTop: 50
+    },
+    backButton: {
+        backgroundColor: '#ffffff',
+        color: '#E0273E',
+        borderColor: '#E0273E',
         width: '90%',
         marginLeft: 'auto',
         marginRight: 'auto',

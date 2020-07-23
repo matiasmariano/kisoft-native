@@ -5,9 +5,10 @@ export const useAuthentication = () => {
     const [userData, setUserData] = useState(undefined)
 
     const authenticate = async (user, pass) => {
-        let loginResponse = await login()
+        let loginResponse = await login(user, pass)
         if (loginResponse.data)
-            setUserData(loginResponse.data);
+            setUserData({ usuario: 'pepe' });
+        //setUserData(loginResponse.data);
     }
     const logout = () => (setUserData(undefined))
 

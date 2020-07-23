@@ -32,7 +32,6 @@ const Reserva = ({ navigation, route }) => {
                     apellido: '',
                     dni: '',
                     mail: '',
-                    sexo: '',
                     telefono: '',
                     celular: ''
                 }

@@ -1,4 +1,3 @@
-import httpClientDecidir from '../../../app/core/config/axios/httpClients/httpClientDecidir'
 import httpClientApi from '../../../app/core/config/axios/httpClients/httpClientApi'
 
 export const login = async () => {

@@ -4,7 +4,6 @@ import ButtonK from '../../../../../shared/components/inputs/ButtonK';
 import InputText from '../../../../../shared/components/inputs/InputText';
 
 const StepC = ({ inputReserva, setInputReserva, setStepNumber }) => {
-
     return (
         <View style={styles.container}>
             <InputText
@@ -46,7 +45,7 @@ const StepC = ({ inputReserva, setInputReserva, setStepNumber }) => {
             <View style={styles.buttonContainer}>
                 <ButtonK
                     title="Anterior"
-                    style={styles.nextButton}
+                    style={styles.backButton}
                     onPress={() => setStepNumber('B')} />
                 <ButtonK
                     title="Siguiente"
@@ -70,6 +69,16 @@ const styles = {
     },
     nextButton: {
         backgroundColor: '#E0273E',
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        height: 50,
+        marginTop: 50
+    },
+    backButton: {
+        backgroundColor: '#ffffff',
+        color: '#E0273E',
+        borderColor: '#E0273E',
         width: '90%',
         marginLeft: 'auto',
         marginRight: 'auto',

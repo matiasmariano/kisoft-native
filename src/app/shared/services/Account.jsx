@@ -1,9 +1,5 @@
-import httpClientDecidir from '../../../app/core/config/axios/httpClients/httpClientDecidir'
+import httpClientApi from '../../../app/core/config/axios/httpClients/httpClientApi'
 
-export const login = async () => {
-    return {
-        data: {
-            token: '1231rjno1h41uob3bgv14gv1ug4uo124uo1v4uo14v1o4v1'
-        }
-    }
+export const login = async (user, pass) => {
+    return httpClientApi.post(`/login?email=${user}&password=${pass}`)
 }

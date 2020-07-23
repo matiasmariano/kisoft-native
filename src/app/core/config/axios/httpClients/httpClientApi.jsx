@@ -2,7 +2,7 @@ import axios from 'axios'
 import { requestHandler, successHandler, errorHandler } from '../axiosConfiguration'
 
 const httpClientApi = axios.create({
-    baseURL: '',
+    baseURL: 'https://api.kisoft.fanbag.com.ar/api',
 });
 
 httpClientApi.interceptors.request.use(

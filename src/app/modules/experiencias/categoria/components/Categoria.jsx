@@ -37,7 +37,7 @@ const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus 
                     />
                 </View>
 
-                <Text style={styles.descripcion} numberOfLines={3}>{oferta.descripcion_general}</Text>
+                <Text style={styles.descripcion} numberOfLines={3}>{oferta.description_general}</Text>
 
                 <View>
                     <Text style={[styles.screenTextStyle]}>

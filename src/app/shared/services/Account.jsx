@@ -1,10 +1,13 @@
 import httpClientApi from '../../../app/core/config/axios/httpClients/httpClientApi'
 
-export const login = async () => {
-    let user = 'usuario_1@valijachica.com.ar';
-    let password = '132456';
-    return httpClientApi.post(`login?email=${user}&password=${password}`);
-    /*data: {
-        token: '1231rjno1h41uob3bgv14gv1ug4uo124uo1v4uo14v1o4v1'
-    }*/
+export const getToken = async (user) => {
+    return httpClientApi.get(`/getCodeTMP?email=${user}`);
+}
+
+export const getPassword = async (user, loginToken) => {
+    return httpClientApi.post(`/getPass?email=${user}&token=${loginToken}`)
+}
+
+export const getJWT = async (user, password, plataforma, deviceId) => {
+    return httpClientApi.post(`/login?${user_hard}&password=${password}&platform=${plataforma}&device_id=${deviceId}`)
 }

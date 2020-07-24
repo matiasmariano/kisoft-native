@@ -27,7 +27,9 @@ const Experiencia = ({ navigation, route, token }) => {
 
     let imagenes = []
     if (experiencia) {
-        experiencia.gallery.forEach(imagen => {
+        let galeria = [experiencia.image_url].concat(experiencia.gallery.filter(img => { return img != experiencia.image_url}));
+        
+        galeria.forEach(imagen => {
             imagenes.push(<Image source={{ uri: imagen }} style={styles.imagen} />)
         });
     }

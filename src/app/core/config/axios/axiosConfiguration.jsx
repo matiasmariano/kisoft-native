@@ -15,7 +15,7 @@ export const successHandler = (response) => {
 }
 
 export const errorHandler = (error) => {
-    console.log(JSON.stringify(error))
-
+    console.log(JSON.stringify(error));
+    
     return { error: error, okResponse: false }
 }

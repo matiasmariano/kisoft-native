@@ -9,5 +9,5 @@ export const getPassword = async (user, loginToken) => {
 }
 
 export const getJWT = async (user, password, plataforma, deviceId) => {
-    return httpClientApi.post(`/login?${user_hard}&password=${password}&platform=${plataforma}&device_id=${deviceId}`)
+    return httpClientApi.post(`/login?email=${user}&password=${password}&platform=${plataforma}&device_id=${deviceId}`)
 }

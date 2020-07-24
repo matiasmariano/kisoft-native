@@ -11,9 +11,10 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus, token
     const [categorias, setCategorias] = useState([])
 
     const irDetalleCategoria = async (titulo, id) => {
-        let c = await getCatalogByCategoryId(id)
+        let c = await getCatalogByCategoryId(id, token, 1 , 20)
+
         if (c.data) {
-            navigation.navigate('Categoria', { title: titulo, experiencias: c.data })
+            navigation.navigate('Categoria', { title: titulo, experiencias: c.data.data })
         }
     }
 

@@ -17,46 +17,46 @@ const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus 
     const irDetalleExperiencia = (titulo, id) => {
         navigation.navigate('DetalleExperiencias', { title: titulo, categoriaId: id })
     }
-
-    const catalogoList = catalogo.map((oferta, index) => {
+    
+    const catalogoList = catalogo && catalogo.data ? catalogo.data.map((oferta, index) => {
         return (
-            <TouchableOpacity style={styles.categoriaContainer} key={`oferta_${oferta.titulo}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
+            <View style={styles.categoriaContainer} key={`oferta_${oferta.id}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
                 <>
-                    <Image source={{ uri: oferta.imagen }} style={styles.imagen} onPress={() => irDetalleExperiencia('', oferta.id)} />
-                    <TagPuntos points={oferta.costo} top={170} left={10} />
+                    <Image source={{ uri: oferta.image_url }} style={styles.imagen} onPress={() => irDetalleExperiencia('', oferta.id)} />
+                    <TagPuntos points={oferta.serviceCost} top={170} left={10} />
                 </>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={styles.titulo}>{oferta.titulo}</Text>
+                    <Text style={styles.titulo}>{oferta.public_name}</Text>
                     <Rating
                         type='heart'
                         count={5}
                         imageSize={20}
                         readonly={true}
-                        startingValue={oferta.puntuacion}
+                        startingValue={oferta.calificacion ? oferta.calificacion : 0}
                         style={{ marginTop: 16, marginRight: '5%' }}
                     />
                 </View>
 
-                <Text style={styles.descripcion} numberOfLines={3}>{oferta.descripcion}</Text>
+                <Text style={styles.descripcion} numberOfLines={3}>{oferta.descripcion_general}</Text>
 
                 <View>
                     <Text style={[styles.screenTextStyle]}>
                         <Icon name="ios-pin" size={15} color="#E42028" />
-                        <Text>{` ${oferta.ubicacion}`}</Text>
+                        <Text>{` ${oferta.city_name}, ${oferta.state_name}`}</Text>
                     </Text>
                 </View>
 
                 <View>
                     <Text style={[styles.screenTextStyle]}>
                         <Icon name="ios-person" size={15} color="#E42028" />
-                        <Text>{` Para ${oferta.cantidad_personas} personas`}</Text>
+                        <Text>{`${oferta.persons}`}</Text>
                     </Text>
                 </View>
 
                 {index < (catalogo.length - 1) ? <View style={styles.lineCategorias} /> : <View style={styles.marginEnd} />}
-            </TouchableOpacity >
+            </View >
         )
-    })
+    }) : [];
 
     return (
         <View style={styles.body}>

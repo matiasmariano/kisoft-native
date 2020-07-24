@@ -10,8 +10,10 @@ const ModalK = ({ isModalVisible, componente, onSwipeComplete, customStyle }) =>
         <Modal
             isVisible={isModalVisible}
             backdropOpacity={0.5}
-            onSwipeComplete={(value) => onSwipeComplete(false)}
-            style={styleModal}>
+            onSwipeComplete={() => onSwipeComplete(false)}
+            style={styleModal}
+            onBackdropPress={() => { onSwipeComplete(false) }}
+            onBackButtonPress={() => { onSwipeComplete(false) }}>
             <View style={{ flex: 1, }}>
                 {componente}
                 {/*<Text

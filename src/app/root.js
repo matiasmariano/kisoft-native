@@ -5,10 +5,10 @@ import Login from './modules/authentication/components/Login/Login';
 import { useAuthentication } from '../app/shared/hooks/authentication'
 
 const Root = () => {
-  const { userData, authenticate, logout } = useAuthentication()
+  const { userData, authenticate, logout, token } = useAuthentication()
 
   return (
-    userData
+    token && token.length > 0
       ?
       <>
         <Aside logout={logout} />

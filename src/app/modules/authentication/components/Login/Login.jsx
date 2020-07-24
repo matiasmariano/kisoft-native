@@ -17,7 +17,7 @@ import { buttonStyle } from '../../../../../assets/style/ButtonStyle';
 const Login = ({ authenticate }) => {
     const { token, getToken } = useNotifications()
     //const { processPayment, statusPayment } = usePayment()
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState('usuario_1@valijachica.com.ar');
     const [pass, setPass] = useState('');
 
     getToken()

@@ -20,7 +20,7 @@ const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus 
     
     const catalogoList = catalogo && catalogo.data ? catalogo.data.map((oferta, index) => {
         return (
-            <TouchableOpacity style={styles.categoriaContainer} key={`oferta_${oferta.id}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
+            <TouchableOpacity activeOpacity={.8} style={styles.categoriaContainer} key={`oferta_${oferta.id}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
                 <>
                     <Image source={{ uri: oferta.image_url }} style={styles.imagen} onPress={() => irDetalleExperiencia('', oferta.id)} />
                     <TagPuntos points={oferta.serviceCost} top={170} left={10} />

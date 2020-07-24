@@ -11,7 +11,7 @@ const Root = () => {
     token && token.length > 0
       ?
       <>
-        <Aside logout={logout} />
+        <Aside logout={logout} token={token}/>
       </>
       :
       <Login authenticate={authenticate} />

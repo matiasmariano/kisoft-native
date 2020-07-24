@@ -25,7 +25,7 @@ import DetalleSorteo from "../../../modules/multiflex/detalle/Components/Detalle
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-function HomeScreens(filterModalOpened, setFilterModalStatus) {
+function HomeScreens(filterModalOpened, setFilterModalStatus, token) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
@@ -33,18 +33,18 @@ function HomeScreens(filterModalOpened, setFilterModalStatus) {
   );
 }
 
-function ExperienciasScreens(filterModalOpened, setFilterModalStatus) {
+function ExperienciasScreens(filterModalOpened, setFilterModalStatus, token) {
   return (
     <Stack.Navigator initialRouteName="Categorias">
-      <Stack.Screen name="Categorias" component={({ navigation, route }) => { return <Categorias filterModalOpened={filterModalOpened} route={route} setFilterModalStatus={setFilterModalStatus} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="Categoria" component={({ navigation, route }) => { return <Categoria filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} route={route} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Categorias" component={({ navigation, route }) => { return <Categorias token={token} filterModalOpened={filterModalOpened} route={route} setFilterModalStatus={setFilterModalStatus} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="Categoria" component={({ navigation, route }) => { return <Categoria token={token} filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} route={route} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
       <Stack.Screen name="DetalleExperiencias" component={DetalleExperiencias} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
       <Stack.Screen name="Reserva" component={Reserva} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );
 }
 
-function PuntosFlexScreens(filterModalOpened, setFilterModalStatus) {
+function PuntosFlexScreens(filterModalOpened, setFilterModalStatus, token) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Multiflex" component={Multiflex} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
@@ -53,16 +53,16 @@ function PuntosFlexScreens(filterModalOpened, setFilterModalStatus) {
   );
 }
 
-const Aside = ({ logout }) => {
+const Aside = ({ logout, token }) => {
 
   const [filterModalOpened, setFilterModalStatus] = useState(false);
 
   return (
     <NavigationContainer theme={styles.theme} ref={navigationRef}>
       <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawer {...props} logout={logout} />}>
-        <Drawer.Screen name="Home" component={() => { return HomeScreens(filterModalOpened, setFilterModalStatus) }} />
-        <Drawer.Screen name="Experiencias" component={() => { return ExperienciasScreens(filterModalOpened, setFilterModalStatus) }} />
-        <Drawer.Screen name="MultiFlex" component={() => { return PuntosFlexScreens(filterModalOpened, setFilterModalStatus) }} />
+        <Drawer.Screen name="Home" component={() => { return HomeScreens(filterModalOpened, setFilterModalStatus, token) }} />
+        <Drawer.Screen name="Experiencias" component={() => { return ExperienciasScreens(filterModalOpened, setFilterModalStatus, token) }} />
+        <Drawer.Screen name="MultiFlex" component={() => { return PuntosFlexScreens(filterModalOpened, setFilterModalStatus, token) }} />
         <Drawer.Screen name="Cerrar Sesion" component={() => { return <ButtonK onPress={logout()} /> }} />
       </Drawer.Navigator>
     </NavigationContainer>

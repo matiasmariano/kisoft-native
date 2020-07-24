@@ -3,8 +3,10 @@ import { View, Text, Image, ScrollView, TouchableHighlight } from "react-native"
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { get, getCatalogByCategoryId } from '../services/CategoriasServices';
 import Filtros from '../../../../shared/components/filtros/Filtros'
+import { useAuthentication } from '../../../../shared/hooks/authentication'
+import { AsyncStorage } from 'react-native';
 
-const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => {
+const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus, token }) => {
 
     const [categorias, setCategorias] = useState([])
 
@@ -21,9 +23,10 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => 
 
     useEffect(() => {
         const call = async () => {
-            let c = await get()
+            let c = await get(token)
+            
             if (c.data)
-                setCategorias(c.data);
+                setCategorias(c.data.data);
         }
         call()
     }, [])
@@ -34,11 +37,11 @@ const Categorias = ({ navigation, filterModalOpened, setFilterModalStatus }) => 
             <>
                 {
                     categoria &&
-                    <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${categoria.title}`} onPress={() => irDetalleCategoria(categoria.titulo, categoria.id)}>
-                        <Image source={{ uri: categoria.img }} style={styles.imagen} />
+                    <TouchableHighlight style={styles.categoriaContainer} key={`categoria_${categoria.code}`} onPress={() => irDetalleCategoria(categoria.code, categoria.id)}>
+                        <Image source={{ uri: categoria.image }} style={styles.imagen} />
                     </TouchableHighlight>
                 }
-                <Text style={styles.categoriaText} onPress={() => irDetalleCategoria(categoria.titulo, categoria.id)}> {categoria.titulo}</Text>
+                <Text style={styles.categoriaText} onPress={() => irDetalleCategoria(categoria.code, categoria.id)}> {categoria.name}</Text>
             </>
         )
     });

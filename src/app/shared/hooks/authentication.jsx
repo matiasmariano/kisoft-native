@@ -12,6 +12,7 @@ export const useAuthentication = () => {
         let deviceId = '123'
         
         //Validación de token...
+        setToken(await AsyncStorage.getItem('USER_TOKEN'));
         let request = token.length > 0 ? await validateToken(token) : undefined;
         
         if (!request || request.data.status === TOKEN_EXPIRED) {
@@ -20,7 +21,7 @@ export const useAuthentication = () => {
             let password = await getPassword(user, loginToken.data.data.token);
             let key = await getJWT(user, password.data.data.password, platform, deviceId);
             
-            if (key.okResponse) {
+            if (key.data.data) {
                 setToken(key.data.data.token);
                 await AsyncStorage.setItem(
                     'USER_TOKEN',

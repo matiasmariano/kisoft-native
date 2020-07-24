@@ -10,68 +10,69 @@ import { Rating } from 'react-native-ratings';
 import Map from '../../../../shared/components/map/Map'
 import ModalK from '../../../../shared/components/modal/ModalK'
 
-const Experiencia = ({ navigation, route }) => {
+const Experiencia = ({ navigation, route, token }) => {
 
     const [experiencia, setExperiencia] = useState(undefined)
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     useEffect(() => {
         const call = async () => {
-            let e = await get(route.params.experienciaId)
+            let e = await get(route.params.experienciaId, token)
+            
             if (e.data)
-                setExperiencia(e.data);
+                setExperiencia(e.data.data);
         }
         call()
     }, [])
 
     let imagenes = []
     if (experiencia) {
-        experiencia.imagenes.forEach(imagen => {
+        experiencia.gallery.forEach(imagen => {
             imagenes.push(<Image source={{ uri: imagen }} style={styles.imagen} />)
         });
     }
-
+    
     return ( 
         experiencia ?
             <View style={styles.body}>
-                <Header points={20000} title={experiencia.name} descuenta={true} title={experiencia.nombre} />
+                <Header points={20000} title={experiencia.public_name} descuenta={true} />
                 <ScrollView>
                     <Carousel
                         itemsPerInterval={1}
                         items={imagenes}
                     />
-                    <TagPuntos points={experiencia.costo} top={130} left={10} />
+                    <TagPuntos points={experiencia.puntos} top={130} left={10} />
                     <View>
                         <Rating
                             type='heart'
                             count={5}
                             imageSize={30}
                             readonly={true}
-                            startingValue={experiencia.puntuacion}
+                            startingValue={experiencia.calificacion ? experiencia.calificacion : 0}
                             style={styles.heartStyle}
                         />
                     </View>
                     <View>
                         <Text style={[styles.screenTextStyle]}>
                             <Icon name="ios-pin" size={15} color="#E42028" />
-                            <Text>{` ${experiencia.ubicacion}`}</Text>
+                            <Text>{` ${experiencia.city_name}, ${experiencia.state_name}`}</Text>
                         </Text>
                     </View>
                     <View>
                         <Text style={[styles.screenTextStyle]}>
                             <Icon name="ios-person" size={15} color="#E42028" />
-                            <Text>{` Para ${experiencia.cantidadPersonas} personas`}</Text>
+                            <Text>{` Para ${experiencia.persons} personas`}</Text>
                         </Text>
                     </View>
-                    <View>
+                    {/*<View>
                         <Text style={[styles.screenTextStyle]}>
                             <Icon name="ios-clock" size={15} color="#E42028" />
                             <Text>{` Para ${experiencia.horario} personas`}</Text>
                         </Text>
-                    </View>
+                    </View>*/}
                     <View>
                         <Text style={[styles.screenTextDetalleStyle]}>
-                            <Text>{experiencia.descripcion}</Text>
+                            <Text>{experiencia.description_general}</Text>
                         </Text>
                     </View>
                     <View>
@@ -86,8 +87,8 @@ const Experiencia = ({ navigation, route }) => {
                     <ModalK isModalVisible={isModalVisible}
                         componente={<Map
                             coordenadas={{
-                                latitude: -34.724806,
-                                longitude: -58.251333,
+                                latitude: experiencia.geoLat,
+                                longitude: experiencia.geoLng,
                                 latitudeDelta: 0.015,
                                 longitudeDelta: 0.0121,
                             }} />}

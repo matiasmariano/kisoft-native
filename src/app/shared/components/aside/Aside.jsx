@@ -38,7 +38,7 @@ function ExperienciasScreens(filterModalOpened, setFilterModalStatus, token) {
     <Stack.Navigator initialRouteName="Categorias">
       <Stack.Screen name="Categorias" component={({ navigation, route }) => { return <Categorias token={token} filterModalOpened={filterModalOpened} route={route} setFilterModalStatus={setFilterModalStatus} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
       <Stack.Screen name="Categoria" component={({ navigation, route }) => { return <Categoria token={token} filterModalOpened={filterModalOpened} setFilterModalStatus={setFilterModalStatus} route={route} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
-      <Stack.Screen name="DetalleExperiencias" component={DetalleExperiencias} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
+      <Stack.Screen name="DetalleExperiencias" component={({ navigation, route }) => { return <DetalleExperiencias token={token} route={route} navigation={navigation} /> }} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
       <Stack.Screen name="Reserva" component={Reserva} options={({ route, navigation }) => (options(navigation, route, filterModalOpened, setFilterModalStatus))} />
     </Stack.Navigator>
   );

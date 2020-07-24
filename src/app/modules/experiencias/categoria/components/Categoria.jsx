@@ -15,12 +15,12 @@ const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus 
     }, [])
 
     const irDetalleExperiencia = (titulo, id) => {
-        navigation.navigate('DetalleExperiencias', { title: titulo, categoriaId: id })
+        navigation.navigate('DetalleExperiencias', { title: titulo, experienciaId: id })
     }
     
     const catalogoList = catalogo && catalogo.data ? catalogo.data.map((oferta, index) => {
         return (
-            <View style={styles.categoriaContainer} key={`oferta_${oferta.id}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
+            <TouchableOpacity style={styles.categoriaContainer} key={`oferta_${oferta.id}`} onPress={() => irDetalleExperiencia('', oferta.id)}>
                 <>
                     <Image source={{ uri: oferta.image_url }} style={styles.imagen} onPress={() => irDetalleExperiencia('', oferta.id)} />
                     <TagPuntos points={oferta.serviceCost} top={170} left={10} />
@@ -54,7 +54,7 @@ const Categoria = ({ navigation, route, filterModalOpened, setFilterModalStatus 
                 </View>
 
                 {index < (catalogo.length - 1) ? <View style={styles.lineCategorias} /> : <View style={styles.marginEnd} />}
-            </View >
+            </TouchableOpacity >
         )
     }) : [];
 

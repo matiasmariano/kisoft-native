@@ -35,7 +35,7 @@ const FiltrosDetail = ({ handlerUpdate, setIsModalVisible }) => {
             }
         }
         call()
-    }, [input])
+    }, [])
 
     const onUpdate = () => {
         //go API...

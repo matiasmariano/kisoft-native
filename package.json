@@ -9,7 +9,7 @@
     "@react-native-community/async-storage": "^1.10.3",
     "@react-navigation/drawer": "^5.7.5",
     "@react-navigation/native": "^5.4.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "bootstrap": "^4.5.0",
